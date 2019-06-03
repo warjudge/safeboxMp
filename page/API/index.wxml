@@ -1,0 +1,162 @@
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 100rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 100rpx;height: 100rpx;" type="userAvatarUrl"></open-data>
+        </view>
+
+        <view style="display: block;height: 10px;width: 92%;border-bottom:1px solid #ccc;margin: 0 auto;"></view>
+
+        <view class='content' style="margin-top: 100rpx;">
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>
+
+<view hidden='{{!isShowGetPhone}}'>
+    <view wx:if="{{canIUse}}">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 100rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 100rpx;height: 100rpx;" type="userAvatarUrl"></open-data>
+        </view>
+
+        <view style="display: block;height: 10px;width: 92%;border-bottom:1px solid #ccc;margin: 0 auto;"></view>
+
+        <view class='content' style="margin-top: 100rpx;">
+            <view>申请获取以下权限</view>
+            <text>获得你微信绑定的手机号</text>
+        </view>
+
+        <button class='bottom' type='primary' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+            确认授权
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>
+
+
+<view class='auth-view' hidden='{{!isFirstLogin}}' style="background-color:#fff;">
+    <view class="register-type-view">
+        <view class="register-type" data-select-type="1" bindtap="goToRegister" style="border-bottom: 5rpx solid #f1f1f1;">
+            <view class="avatar">
+                <!--<open-data type="userAvatarUrl"></open-data>-->
+                <image src="/image/person/geren.png" style="width: 178rpx;height: 178rpx;"></image>
+            </view>
+
+            <view class="register-txt">我是个人</view>
+            <text class="register-txt little-sml">借出商品</text>
+            <text class="register-txt little-sml">  归还商品</text>
+            <text class="register-txt little-sml">  个人认证</text>
+        </view>
+        <view class="register-type" data-select-type="2" bindtap="goToRegister">
+            <view class="avatar">
+                <!--<open-data type="userAvatarUrl"></open-data>-->
+                <image src="/image/person/shangjia.png" style="width: 178rpx;height: 178rpx;"></image>
+            </view>
+            <view class="register-txt">我是商家</view>
+            <text class="register-txt little-sml">借出商品</text>
+            <text class="register-txt little-sml">  归还商品</text>
+            <text class="register-txt little-sml">  企业认证</text>
+            <text class="register-txt little-sml" style="color: #FD6070">  管理子账户</text>
+        </view>
+    </view>
+    <!--<upload id='upload' files='{{files}}' maxFileCount='{{maxFileCount}}' isCanAddFile='{{files.length>=maxFileCount?false:true}}'></upload>-->
+    <!--<button bindtap='showFiles'>获取文件</button>-->
+</view>
+
+
+<view class='auth-view' hidden='{{!showPersonRegister}}' style="background-color:#fff;">
+    <form bindsubmit='personRegister' report-submit='true' style="width: 95%;margin: 0 auto;">
+        <text class='getPhone-title'></text>
+        <view class='getPhone-avatar-border' style="width: 100%">
+            <open-data class='getPhone-avatar' type="userAvatarUrl"></open-data>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
+            <input style="width:92%;" type='number' maxlength='11' class='input' value='{{phone}}' bindinput='setPhone' name="phone" placeholder='请输入手机号'></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
+            <view class='input-right'style="width:92%;">
+                <input type='number' maxlength='6' class='input input1' bindinput='setCode' name="code" value='' placeholder='请输入验证码'></input>
+                <button class='input-button' bindtap='getCode' disabled='{{!canGetCode}}'>{{codeButton}}</button>
+            </view>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/nameicon.png' style="width: 30rpx;height: 36rpx;"></image>
+            <input style="width:92%;" class='input' value='' name="userName" placeholder='请输入真实姓名'></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/idcardicon.png' style="width: 41rpx;height: 30rpx;"></image>
+            <input style="width:92%;" type='text' class='input' value='' name="idNumber" placeholder='请输入身份证号'></input>
+        </view>
+        <button class='modal-1-button input-button1' style="width:674rpx;border-radius:47rpx;background-image: url();background-color:#FF4C5E;margin-bottom: 0;" disabled='{{!canBindPhone}}' form-type='submit'>注册</button>
+    </form>
+</view>
+
+<view class='auth-view' hidden='{{!showCompanyRegister}}' style="background-color:#fff;">
+    <form bindsubmit='companyRegister' report-submit='true' style="width: 95%;margin: 0 auto;">
+        <text class='getPhone-title'></text>
+        <view class='getPhone-avatar-border' style="width: 100%">
+            <open-data class='getPhone-avatar' type="userAvatarUrl"></open-data>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
+            <input style="width:92%;" type='number' maxlength='11' class='input' value='{{phone}}' bindinput='setPhone' name="phone" placeholder='请输入手机号'></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
+            <view class='input-right' style="width:92%;">
+                <input type='number' maxlength='6' class='input input1' bindinput='setCode' name="code" value='' placeholder='请输入验证码'></input>
+                <button class='input-button' bindtap='getCode' disabled='{{!canGetCode}}'>{{codeButton}}</button>
+            </view>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/qiyeicon.png' style="width: 36rpx;height: 33rpx;"></image>
+            <input style="width:92%;" type='text' class='input' value='' name="company" placeholder='请输入公司名称'></input>
+        </view>
+        <upload id='upload' files='{{files}}' maxFileCount='{{maxFileCount}}' isCanAddFile='{{files.length>=maxFileCount?false:true}}' uploadText="上传或拍摄您的营业执照副本" bigWidth="97%" bigHeight="240rpx"></upload>
+        <button class='modal-1-button input-button1' style="width:674rpx;border-radius:47rpx;background-image: url();background-color:#FF4C5E;margin-bottom: 0;" disabled='{{!canBindPhone}}' form-type='submit'>注册</button>
+        <view style="margin-top: 32rpx;text-align: center;font-size: 24rpx;color: #c5c5c5;">信息一经提交将无法修改，请谨慎填写</view>
+    </form>
+</view>
+
+
+<view hidden="{{!showRegisterComplete}}" style="background-color:#fff;width: 100%;height: 100%;">
+    <view style="position: relative;width: 100%;height: 450rpx;">
+        <!--<view style="height: 200rpx;background-color:#FD6070;">-->
+
+        <!--</view>-->
+        <image src='../../image/person/bolang@2x.png' style="display: block;width: 100%;"></image>
+        <image src='../../image/person/shenhewaixing@2x.png' style="display: block;width:193rpx;height: 193rpx;position: absolute;top:80rpx;left:50%;transform: translateX(-50%)"></image>
+        <view style="display:block;width: 100%;font-size: 28rpx;line-height: 28rpx;text-align: center;position: absolute;top:300rpx;color: #fff;">注册申请已提交，请耐心等待审核</view>
+    </view>
+
+    <view class='content' style="margin-bottom: 0;margin-left: 0;">
+        <text style="display:block;font-size: 30rpx;text-align: center;padding-bottom: 28rpx;color: #c5c5c5;">你也可以关注我们的公众号，获取其他信息</text>
+        <!--<image src='../../image/72px.png' style="display: block;margin: 0 auto;width: 184rpx;height:184rpx;"></image>-->
+        <!--<text style="display:block;font-size: 30rpx;line-height: 30rpx;text-align: center;margin-top: 48rpx;color: #353535;">囤宝宝管家</text>-->
+        <!--<button class='bottom' type='primary' style="margin-top: 48rpx;background-color: #FF4C5E;">-->
+            <!--关注-->
+        <!--</button>-->
+        <official-account></official-account>
+    </view>
+
+    <view class="bottom">
+        <text style="display:block;font-size: 26rpx;text-align: center;padding-bottom: 12rpx;color: #c5c5c5;">专注古玩玉石的宝贝管家</text>
+        <text style="display:block;font-size: 26rpx;text-align: center;color: #c5c5c5;">帮您轻松管理您的宝贝</text>
+    </view>
+</view>
+
+
+<view class='auth-view' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>网络错误，请重试</text>
+        <text class='auth-text'></text>
+    </view>
+    <button class='auth-button' bindtap='retry'>重试</button>
+</view>

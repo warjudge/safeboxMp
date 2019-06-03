@@ -1,0 +1,13 @@
+<scroll-view class='all-screen'>
+    <view class="content">
+         <view class="con-line" wx:for="{{messageData}}" data-be-old="{{item.goToPath}}" bindtap="goOld">
+             <view class="top">
+                 <view class="left">{{item.content}}</view>
+                 <view class="right">{{item.createTime}}</view>
+             </view>
+             <view class="bottom">
+                 <view class="is-new" hidden="{{item.hasRead}}"></view>
+             </view>
+         </view>
+    </view>
+</scroll-view>

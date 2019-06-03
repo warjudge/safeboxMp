@@ -1,0 +1,108 @@
+.title-2-border {
+  width: 670rpx;
+  margin-left: 40rpx;
+  margin-top: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line1 {
+  height: 1px;
+  width: 100rpx;
+  background-color: #e5e5e5;
+}
+
+.title-2 {
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  line-height: 30rpx;
+}
+
+.product-scroll-view {
+  margin-top: 40rpx;
+  height: 270rpx;
+  width: 670rpx;
+  margin-left: 40rpx;
+  padding-bottom: 0;
+}
+
+.product-scroll-border {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.product-item-border {
+  flex-shrink: 0;
+  margin-right: 30rpx;
+  width: 240rpx;
+  height: 270rpx;
+}
+
+.item-top-line {
+  height: 75rpx;
+}
+
+.item-center-line {
+  width: 150rpx;
+  height: 105rpx;
+}
+
+.center-left {
+  width: 75rpx;
+  height: 105rpx;
+}
+
+.center-right {
+  width: 75rpx;
+  height: 105rpx;
+}
+
+.item-bottom-line {
+  height: 90rpx;
+}
+
+.left-item {
+  font-size: 16rpx;
+  line-height: 20rpx;
+  color: #000;
+  margin-left: 23rpx;
+}
+
+.right-image {
+  width: 48rpx;
+  height: 25rpx;
+  margin-top: 15rpx;
+  margin-right: 15rpx;
+}
+
+.center-right-bottom-img {
+  /* position: absolute;
+  width:60rpx;
+  height:40rpx;
+  right: -66rpx;
+  bottom: -92rpx; */
+  position:absolute;
+  width:105rpx;
+  height:105rpx;
+
+
+}
+
+.text-line-through {
+  margin-top: 15rpx;
+}
+
+.activity-banner-border {
+  width: 670rpx;
+  margin-left: 40rpx;
+  border-radius: 30rpx 30rpx 0 0;
+  margin-top: 60rpx;
+}
+
+.h5-banner {
+  width: 670rpx;
+  height: 260rpx;
+  border-radius: 30rpx 30rpx 0 0;
+}

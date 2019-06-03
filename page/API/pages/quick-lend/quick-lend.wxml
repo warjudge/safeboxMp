@@ -1,0 +1,48 @@
+<view class="all-screen">
+    <view class="content">
+        <view class="goods-item" wx:for="{{goodsList}}" wx:key="{{item.hash}}">
+            <image src="{{item.imageUrl}}" alt="" class="mini-img"></image>
+            <view class="inp-box">
+                <input type="text" data-index="{{index}}" value="{{item.price}}" bindinput="computeAmount" bindfocus="initValue" class="mini-inp" placeholder-class="placeholder-style" placeholder="请输入价格" />
+            </view>
+        </view>
+        <view class="total">
+            共<text style="font-size: 30rpx;color: #353535;"> {{goodsList.length}} </text>件商品
+            <text style="font-size: 30rpx;color: #353535;margin-left: 20rpx;">订单金额 </text><text style="font-size: 30rpx;color: #CC0000;">￥ {{price}}</text>
+        </view>
+
+        <view class="select-type">
+            <picker bindchange="bindPickerChange" value="{{index}}" range="{{period}}">
+                <view class="picker">
+                    <view style="font-size: 34rpx;color: #353535;">选择归还周期：</view>
+                    <view>{{period[index]}} 天</view>
+                </view>
+            </picker>
+        </view>
+
+        <!--<view style="border: 1px solid #ccc;">-->
+            <!--<view>选择归还周期</view>-->
+            <!--<picker-view-->
+                    <!--indicator-style="height: 50rpx;"-->
+                    <!--style="width: 100%; height: 250rpx;"-->
+                    <!--value="{{value}}"-->
+                    <!--bindchange="bindChange"-->
+            <!--&gt;-->
+                <!--<picker-view-column>-->
+                    <!--<view wx:for="{{period}}" style="line-height: 68rpx;">{{item}}天</view>-->
+                <!--</picker-view-column>-->
+            <!--</picker-view>-->
+        <!--</view>-->
+    </view>
+    <view class="cus-footer">
+        <!--<form bindsubmit="_chooseImage" report-submit="{{true}}">-->
+            <button formType="submit" class='modal-1-button input-button1' bindtap="_chooseImage" style="margin: 0 auto;width: 40%;background-image: url('');background-color:#999999;">继续添加商品</button>
+        <!--</form>-->
+        <!--<form bindsubmit="createCode" report-submit="{{true}}">-->
+            <button formType="submit" class='modal-1-button input-button1' bindtap="createCode" style="margin: 0 auto;width: 40%;background-image: url('');background-color:#FD6070;">确认发布</button>
+        <!--</form>-->
+
+        <!--<button bindtap="_chooseImage">继续添加商品</button>-->
+        <!--<button bindtap="createCode">确认发布</button>-->
+    </view>
+</view>

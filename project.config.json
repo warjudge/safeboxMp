@@ -1,0 +1,186 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.0",
+	"appid": "wx7dc72230d0707ea3",
+	"projectname": "BlingBlingStars",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 21,
+			"list": [
+				{
+					"id": 0,
+					"name": "商品详情",
+					"pathName": "page/API/pages/productDetail/productDetail",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "结算中心",
+					"pathName": "page/API/pages/cart/cart",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "地址管理",
+					"pathName": "page/API/pages/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "4",
+					"pathName": "page/API/pages/add-address/add-address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "5",
+					"pathName": "page/API/pages/trade-list/trade-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "6",
+					"pathName": "page/API/pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "7",
+					"pathName": "page/API/pages/trade-detail/trade-detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "8",
+					"pathName": "page/API/pages/recharge/recharge",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "9",
+					"pathName": "page/API/pages/activity/new-comer/new-comer-index/new-comer-index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "0",
+					"pathName": "page/API/pages/activity/new-comer/new-comer-nav/new-comer-nav",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "10",
+					"pathName": "page/API/pages/activity/new-comer/new-comer-nav/new-comer-nav",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "11",
+					"pathName": "page/API/pages/activity/new-comer/new-comer-end/new-comer-end",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "15",
+					"pathName": "page/API/pages/payresult/payresult",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "16",
+					"pathName": "page/API/pages/trade-detail/trade-detail",
+					"query": ""
+				},
+				{
+					"id": 14,
+					"name": "h5",
+					"pathName": "page/API/pages/h5/h5",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "17",
+					"pathName": "page/API/pages/confirm-phone/confirm-phone",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "18",
+					"pathName": "page/API/pages/activity/new-comer/new-comer-processing/new-comer-processing",
+					"query": ""
+				},
+				{
+					"id": 17,
+					"name": "complete",
+					"pathName": "page/API/pages/complete-address/complete-address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "set-pay-secret",
+					"pathName": "page/API/pages/set-pay-secret/set-pay-secret",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "page/API/pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": 20,
+					"name": "index",
+					"pathName": "page/API/index",
+					"query": "id=201811221617002761558457",
+					"scene": "1001"
+				},
+				{
+					"id": 21,
+					"name": "orderNumber=ZJ20190528001",
+					"pathName": "page/API/index",
+					"query": "orderNumber=ZJ20190528006",
+					"scene": 1048
+				},
+				{
+					"id": 22,
+					"name": "id=47039130227437568",
+					"pathName": "page/API/index",
+					"query": "id=47039130227437568",
+					"scene": null
+				}
+			]
+		}
+	}
+}

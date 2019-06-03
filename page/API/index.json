@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "宝贝管家",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "upload": "../component/pages/uploader/upload"
+  }
+}

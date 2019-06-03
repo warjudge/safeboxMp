@@ -1,0 +1,29 @@
+<view class="cus-view" hidden='{{showError}}'>
+    <radio-group class="radio-group" bindchange="radioChange">
+        <view class="package-line" wx:for="{{items}}">
+            <view class="line-right">
+                <radio value="{{item.id}}" checked="{{item.checked}}" />
+                {{item.term+item.termUnit}}
+            </view>
+            <view class="line-left">￥{{item.vipPrice}}</view>
+            <view class="pri-price" hidden="{{!item.price}}">￥{{item.price}}</view>
+            <view class="on-sale" hidden="{{item.state==='正常'}}">{{item.state}}</view>
+        </view>
+    </radio-group>
+
+    <view class="cus-footer">
+        <view>
+            <button class='modal-1-button input-button1' style="margin: 0 auto;width: 669rpx;border-radius: 47rpx;background-image: none;background-color:#FD6070;" bindtap="payment">立即续费</button>
+        </view>
+        <view style="margin-top: 40rpx;">
+            <button class='modal-1-button input-button1' style="margin: 0 auto;width: 669rpx;border-radius: 47rpx;background-image: none;background-color:#999;" bindtap="viewPayLog">消费记录</button>
+        </view>
+    </view>
+</view>
+<view class='all-screen' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>网络错误，请重试</text>
+        <text class='auth-text'></text>
+    </view>
+    <!--<button class='auth-button' bindtap='retry'>重试</button>-->
+</view>

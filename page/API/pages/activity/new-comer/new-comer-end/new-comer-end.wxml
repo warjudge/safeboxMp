@@ -1,0 +1,61 @@
+<!--page/API/pages/activity/new-comer/new-comer-end/new-comer-end.wxml-->
+<view class='top-border'>
+  <view class='top-back'></view>
+  <image class='wave-back' src='/image/wave.png'></image>
+</view>
+<scroll-view>
+
+  <text class='top-text'>恭喜，您已获得1分钻奖励</text>
+
+  <view class='card-border-large custom-card-border' wx:for="{{list}}" wx:for-item="t" wx:key="t">
+    <view class='task-item-border'>
+      <view class='task-item-first-line'>
+        <text class='task-item-first-left'>恭喜，您已获得1颗1分钻</text>
+        <button class='task-item-first-right' bindtap='goToIndex'>立即兑换</button>
+      </view>
+      <view class='task-item-second-line'>
+        <text class='task-item-second-left'>助力完成时间：{{t.friendInfo[t.friendInfo.length-1].viewtime}}</text>
+        <view class='task-item-second-right' data-id='{{t.aidActivityData.aidId}}' bindtap='openFriendList'>
+          <image class='task-item-second-right-image' src='/image/arrowDown.png'></image>
+          <text class='task-item-second-right-text'>查看好友助力团</text>
+        </view>
+      </view>
+      <view class="friend-list-border {{t.showFriendList ? 'kind-list-item-bd-show' : ''}}">
+        <view class='friend-list-title' wx:if="{{commodity.length>0}}">
+          <view class='line1'></view>
+          <text class='friend-list-title-text'>好友助力团</text>
+          <view class='line1'></view>
+        </view>
+        <scroll-view class='friend-list-scroll-view' scroll-y >
+          <view>
+            <view class='friend-list-item' wx:for="{{t.friendInfo}}" wx:for-item="f" wx:key="f" wx:for-index="ind">
+              <view class='friend-item-left-border'>
+                <image class='friend-item-left-avatar-sign' hidden='{{ind!==0}}' src='/image/huangguan.png'></image>
+                <image class='friend-item-left-avatar {{ind==0?"friend-item-left-avatar-border":""}}' src='{{f.userInfo.userIcon}}'></image>
+              </view>
+              <view class='friend-item-right-border'>
+                <view class='friend-item-first-line'>
+                  <text class='friend-item-first-left'>{{f.userInfo.displayName}}</text>
+                  <text class='friend-item-first-right'>最高助力￥{{f.aidActivityData.money}}</text>
+                </view>
+                <view class='friend-item-second-line'>
+                  <text class='friend-item-second-left'>来自：用户注册</text>
+                  <text class='friend-item-second-right'>{{f.viewtime}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class='close-friend-border' data-id='{{t.aidActivityData.aidId}}' bindtap='closeFriendList'>
+          <image class='close-friend-image' src='/image/arrowUp.png'></image>
+          <text class='close-friend-text'>感谢以上好友的助力</text>
+        </view>
+      </view>
+
+
+
+
+    </view>
+  </view>
+
+</scroll-view>

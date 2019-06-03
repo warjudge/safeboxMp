@@ -1,0 +1,77 @@
+<!--page/API/pages/activity/new-comer/new-comer-processing/new-comer-processing.wxml-->
+  <view class='top-border'>
+    <view class='top-back'></view>
+    <image class='wave-back' src='/image/wave.png'></image>
+  </view>
+<scroll-view>
+  <view class='main-border'>
+    <text class='main-text1'>成功入账，还有<text class='mian-text2'>￥{{needMoney}}</text>待领取</text>
+    <view class='modal-progress-border'>
+      <view class='progress-bar' style='width:100rpx'></view>
+      <view class='progress-inner' style='left:70rpx'>
+        <text class='progress-text-1'>￥</text>
+        <text class='progress-text-2'>{{finishMoney}}</text>
+      </view>
+      <view class='progress-bar1'></view>
+    </view>
+    <text class='main-text3'>立即呼唤{{needCount}}位 微信好友助力金额 即可领取</text>
+    <button class='main-button' open-type='share'>邀请好友 为我助力</button>
+  </view>
+  <!-- <view class='main-border'>
+    <text class='main-text1'>成功入账，还有<text class='mian-text2'>￥{{needMoney}}</text>待领取</text>
+    <view class='modal-progress-border'>
+      <view class='progress-bar' style='width:{{bar1 + "rpx"}}'></view>
+      <view class='progress-inner' style='left:{{bar1-30+ "rpx"}}'>
+        <text class='progress-text-1'>￥</text>
+        <text class='progress-text-2'>{{finishMoney}}</text>
+      </view>
+      <view class='progress-bar1'></view>
+    </view>
+    <text class='main-text3'>立即呼唤{{needCount}}位 微信好友助力金额 即可领取</text>
+    <button class='main-button' open-type='share'>邀请好友 为我助力</button>
+  </view> -->
+
+   <view class='title-2-border'>
+    <view class='line1'></view>
+    <text class='title-2'>新人特价</text>
+    <view class='line1'></view>
+  </view>
+
+  <scroll-view class='product-scroll-view' scroll-x="true">
+    <view class='product-scroll-border'>
+      <view bindtap='goToProductDetail' data-id="{{t.commodityData.id}}" class='product-item-border' wx:for="{{commodity}}" wx:for-item="t" wx:key="t.commodityData.id">
+        <view class='item-top-line'>
+          <image class='topright-img' src='/image/icon/zuanshi.png' wx:if="t.commodityData.needDiamond"></image>
+          <text class='topright-text' wx:if="t.commodityData.needDiamond">{{t.commodityData.needDiamond}}</text>
+        </view>
+        <view class='item-center-line'>
+          <!-- <view class='center-left'>
+            <text class='left-item' wx:if="t.commodityData.color">{{t.commodityData.color}}</text>
+            <text class='left-item' wx:if="t.commodityData.craft">{{t.commodityData.craft}}</text>
+            <text class='left-item' wx:if="t.commodityData.purity">{{t.commodityData.purity}}</text>
+            <text class='left-item' wx:if="t.commodityData.size">{{t.commodityData.size}}</text>
+          </view>
+          <view class='center-right'>
+            <image class='right-image' src='/image/product/GIA.png'></image>
+          </view> -->
+          <!-- <image class='center-right-bottom-img' src='/image/product/zuanshi.png'></image> -->
+          <image class='center-right-bottom-img' src='{{t.commodityData.img}}'></image>
+        </view>
+        <view class='item-bottom-line'>
+          <view class='first-line' wx:if="t.commodityData.privatePrice">
+            <text class='text-trade'>Bling</text>
+            <text class='text-price'>￥{{t.commodityData.privatePrice}}</text>
+          </view>
+          <text class='text-line-through' wx:if="t.commodityData.marketPrice">市场 ￥{{t.commodityData.marketPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='activity-banner-border' hidden='{{!showh5activity}}'>
+    <image class='h5-banner' src='{{h5image}}'></image>
+  </view>
+
+
+
+</scroll-view>

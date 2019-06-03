@@ -1,0 +1,19 @@
+<view class="all-screen">
+    <view class="content">
+        <view class="goods-item" wx:for="{{certList}}" wx:key="{{item.hash}}">
+            <image src="{{item.imageUrl}}" alt="" class="mini-img"></image>
+            <view class="inp-box">
+                <input type="text" data-index="{{index}}" value="{{item.price}}" bindinput="computeAmount" disabled class="mini-inp" placeholder-class="placeholder-style" placeholder="请输入价格" />
+            </view>
+        </view>
+        <!--<view class="total">-->
+            <!--共<text style="font-size: 30rpx;color: #353535;"> {{certList.length}} </text>件商品-->
+            <!--<text style="font-size: 30rpx;color: #353535;margin-left: 20rpx;">订单金额 </text><text style="font-size: 30rpx;color: #CC0000;">￥ {{price}}</text>-->
+        <!--</view>-->
+
+    </view>
+    <view class="cus-footer" hidden>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color:#FD6070;" bindtap="createVoucher">确认发布</button>
+        <!--<button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;background-image: url('');background-color:#FD6070;" bindtap="createCode">确认发布</button>-->
+    </view>
+</view>

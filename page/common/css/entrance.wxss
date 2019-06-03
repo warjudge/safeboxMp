@@ -1,0 +1,46 @@
+/* Banner */
+.entrance-border {
+  width: 670rpx;
+  height: 240rpx;
+  margin-left: 40rpx;
+  display: block;
+}
+
+.entrance-img {
+  width: 670rpx;
+  height: 240rpx;
+  /* height: auto;
+  max-width: 100%;
+  max-height: 100%; */
+}
+
+.entrance-title {
+  font-size: 36rpx;
+  line-height: 36rpx;
+  color: #000;
+  font-weight: bolder;
+  margin-top: 70rpx;
+  padding-left: 70rpx;
+  display: block;
+}
+
+.entrance-subtitle {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 26rpx;
+  color: #939495;
+  padding-left: 70rpx;
+  display: block;
+}
+
+.entrance-flex-border {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.entrance-flex-item {
+  width: 320rpx;
+  height: 220rpx;
+  display: inline-block;
+}

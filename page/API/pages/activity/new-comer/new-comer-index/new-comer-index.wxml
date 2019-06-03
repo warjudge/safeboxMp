@@ -1,0 +1,213 @@
+<!--page/API/pages/activity/new-comer/new-comer-index/new-comer-index.wxml-->
+<scroll-view class="custom-scroll-view {{showModal?'close':''}}" scroll-y="{{!showModal}}">
+  <navigator url='/page/API/pages/small-diamond-nav/small-diamond-nav' hover-class='none' class='entrance-border standard-margin-top standard-padding'>
+    <image class='entrance-img box-shadow' mode="widthFix" src='{{banner}}'></image>
+  </navigator>
+  <view class='label-border'>
+    <text class='standard-text'>还差<text class='red-text'>￥{{needMoney?needMoney:''}}</text>待领取
+    </text>
+  </view>
+  <view class='progress-bar-border'>
+    <view class='modal-progress-border'>
+      <view class='progress-bar' style='width:{{bar1+100 + "rpx"}}'></view>
+      <view class='progress-inner' style='left:{{bar1+70 + "rpx"}}'>
+        <text class='progress-text-1'>￥</text>
+        <text class='progress-text-2'>{{finishMoney}}</text>
+      </view>
+      <view class='progress-bar1' style='width:{{bar2+45 + "rpx"}}'></view>
+    </view>
+  </view>
+  <!-- <view class='progress-bar-border'>
+    <view class='modal-progress-border'>
+      <view class='progress-bar' style='width:{{400 + "rpx"}}'></view>
+      <view class='progress-inner' style='left:{{400 + "rpx"}}'>
+        <text class='progress-text-1'>￥</text>
+        <text class='progress-text-2'>{{finishMoney}}</text>
+      </view>
+      <view class='progress-bar1' style='width:{{100 + "rpx"}}'></view>
+    </view>
+  </view> -->
+
+
+  <view class='button-group-border'>
+    <button class='text-border' bindtap='goToH5'>
+      <text class='button-text' >生成海报</text>
+    </button>
+    <button class='back-border' open-type='share'>立即邀请</button>
+  </view>
+  <view class='card-border-large custom-card'>
+    <view class='card-large-title-border'>
+      <text class='card-large-title-left'>助力好友</text>
+      <text class='card-large-title-right'>再邀请{{needCount}}位即可领取钻石</text>
+    </view>
+
+    <scroll-view class='friend-avatar-scroll-view' scroll-x="true">
+      <view class='avatar-group-border'>
+        <view class='friend-avatar-border' wx:for="{{taskData.friendInfo}}" wx:for-item="t" wx:key="t">
+          <image class='friend-avatar' src='{{t.userInfo.userIcon}}'></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class='card-border-large custom-card-1'>
+    <view class='card-large-title-border'>
+      <text class='card-large-title-left'>领钻玩法</text>
+      <text class='card-large-title-right' bindtap='openModal'>了解更多</text>
+    </view>
+    <scroll-view class='friend-avatar-scroll-view1' scroll-x="true">
+      <view class='instruct-border'>
+        <view class='top-button-line '>
+          <view class='button-line-item top-button-position1'>
+            <view class='text-border-line-button'>
+              <text class='button-text'>兑换快乐钻</text>
+            </view>
+            <view class='jiao jiao-position'></view>
+          </view>
+        </view>
+        <view class='line-border'>
+          <view class='line-star'></view>
+          <view class='line'></view>
+          <view class='point point-position1'>
+            <view class='point-center'></view>
+          </view>
+          <view class='point point-position2'>
+            <view class='point-center'></view>
+          </view>
+          <view class='point point-position3'>
+            <view class='point-center'></view>
+          </view>
+        </view>
+        <view class='bottom-button-line'>
+          <view class='button-line-item bottome-button-position1'>
+            <view class='text-border-line-button'>
+              <text class='button-text'>邀请助力</text>
+            </view>
+            <view class='jiao1 jiao-position1'></view>
+          </view>
+          <view class='button-line-item bottome-button-position2'>
+            <view class='text-border-line-button'>
+              <text class='button-text'>兑换克拉裸钻</text>
+            </view>
+            <view class='jiao1 jiao-position1'></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class='back-border button-position' open-type='share'>立即邀请</button>
+  </view>
+
+  <view class='title-2-border' wx:if="{{commodity.length>0}}">
+    <view class='line1'></view>
+    <text class='title-2'>新人特价</text>
+    <view class='line1'></view>
+  </view>
+
+  <scroll-view class='product-scroll-view' scroll-x="true" wx:if="{{commodity.length>0}}">
+    <view class='product-scroll-border'>
+      <view bindtap='goToProductDetail' data-id="{{t.commodityData.id}}" class='product-item-border' wx:for="{{commodity}}" wx:for-item="t" wx:key="t.commodityData.id">
+        <view class='item-top-line'>
+          <image class='topright-img' src='/image/icon/zuanshi.png' wx:if="t.commodityData.needDiamond"></image>
+          <text class='topright-text' wx:if="t.commodityData.needDiamond">{{t.commodityData.needDiamond}}</text>
+        </view>
+        <view class='item-center-line'>
+          <!-- <view class='center-left'>
+            <text class='left-item' wx:if="t.commodityData.color">{{t.commodityData.color}}</text>
+            <text class='left-item' wx:if="t.commodityData.craft">{{t.commodityData.craft}}</text>
+            <text class='left-item' wx:if="t.commodityData.purity">{{t.commodityData.purity}}</text>
+            <text class='left-item' wx:if="t.commodityData.size">{{t.commodityData.size}}</text>
+          </view>
+          <view class='center-right'>
+            <image class='right-image' src='/image/product/GIA.png'></image>
+          </view> -->
+          <!-- <image class='center-right-bottom-img' src='/image/product/zuanshi.png'></image> -->
+          <image class='center-right-bottom-img' src='{{t.commodityData.img}}'></image>
+        </view>
+        <view class='item-bottom-line'>
+          <view class='first-line' wx:if="t.commodityData.privatePrice">
+            <text class='text-trade'>Bling</text>
+            <text class='text-price'>￥{{t.commodityData.privatePrice}}</text>
+          </view>
+          <text class='text-line-through' wx:if="t.commodityData.marketPrice">市场 ￥{{t.commodityData.marketPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='activity-banner-border' hidden='{{!showh5activity}}' wx:if="{{h5image}}">
+    <image class='h5-banner' src='{{h5image}}'></image>
+  </view>
+
+
+</scroll-view>
+<view class='modal-content' hidden='{{!showModal}}'></view>
+<!-- <view class='modal-content' hidden='{{!showModal}}'> -->
+  <view class='activity-modal-border {{showModal?"activity-modal-border-animation":""}}'>
+    <view class='activity-modal-title-border'>
+      <text class='activity-modal-title'>助力规则</text>
+    </view>
+    <scroll-view class='regular-scroll-view' bindtap='test' scroll-y>
+      <view>
+        <text class='activity-modal-title-sign'>本说明中设计“领取”定义为：将“待领取”内1分钻礼包转为“已领取”内</text>
+        <view class='color-back'>
+          <image class='color-back-sign' src='/image/lingxing.png'></image>
+          <text class='color-back-text'>邀请他人为您助力提现1分钻礼包的规则说明</text>
+        </view>
+        <view class='sep'></view>
+
+        <text class='regular-title'>1.获得1分钻礼包的规则：</text>
+        <view class='regular-subtitle-border'>
+          <text class='regular-subtitle'>(1)在Blingbling Star正确的小程序页面上成功授权微信用户个人信息和真实手机号码，即可获得一次领取“1分钻礼包”的次数。</text>
+          <text class='regular-subtitle'>(2)您点击“存入我的账户”后，将获得一个24小时内未领取的“1分钻礼包”。</text>
+          <text class='regular-subtitle'>(3)在Blingbling Stars正确的小程序页面上每成功支付且实际支付金额大于0元，即可获得一次领取次数，购买的商品类型包括裸钻和快乐钻，不包括1分钻的购买和赠送。（以下简称“已支付订单”）</text>
+          <text class='regular-subtitle'>(4)每笔已支付订单，您点击“存入我的账户”后，将获得一个24小时内未领取的“1分钻礼包”。</text>
+          <text class='regular-subtitle'>(5)您必须点击“存入我的账户”。</text>
+        </view>
+
+        <text class='regular-title'>2.如何领取和兑换1分钻礼包？</text>
+        <view class='regular-subtitle-border'>
+          <text class='regular-subtitle'>(1)点击“存入我的账户”后，“1分钻礼包”助力开始。</text>
+          <text class='regular-subtitle'>(2)您可以邀请他人为您领取礼包助力。</text>
+          <text class='regular-subtitle'>(3)他人点击助力成功，您将随机领取相应礼包金额。</text>
+          <text class='regular-subtitle'>(4)如您邀请到新用户完成微信用户个人信息和真实手机号码授权，您领取的随机礼包金额可能会更大哦！</text>
+          <text class='regular-subtitle'>(5)礼包即时领取，最晚在2个工作日内完成领取和兑换成1颗“1分钻”存入您的钻石余额。</text>
+        </view>
+
+        <view class='color-back'>
+          <image class='color-back-sign' src='/image/lingxing.png'></image>
+          <text class='color-back-text'>您为他人助力领取红包的规则说明</text>
+        </view>
+        <view class='sep'></view>
+
+        <text class='regular-title'>1.获得随机礼包规则：</text>
+        <view class='regular-subtitle-border'>
+          <text class='regular-subtitle'>(1)助力他人领取礼包，您也将获得一个未领取的“随机礼包”，该礼包金额随机产生。</text>
+          <text class='regular-subtitle'>(2)如您在Blingbling Stars内有任何一笔已支付订单，您每天可帮助完成2笔不同礼包的助力。</text>
+          <text class='regular-subtitle'>(3)您帮助他人完成礼包助理时，同一个助力礼包，您只能助力一次。</text>
+          <text class='regular-subtitle'>(4)如您在本APP/小程序内无任何已支付的订单，在此之前，您总共只能助力2次不同的礼包。</text>
+        </view>
+
+        <text class='regular-title'>2.如何领取随机礼包？</text>
+        <view class='regular-subtitle-border'>
+          <text class='regular-subtitle'>(1)您必须获得一次领取礼包的次数，且点击“存入我的账户”后，获得一个未领取的“1分钻礼包”。</text>
+          <text class='regular-subtitle'>(2)一个“1分钻礼包”任务的完成条件：必须满足礼包助力金额达到35元，达到任务金额后，“1分钻礼包”自动兑换成当前账户钻石余额的1颗“1分钻”，该1颗1分钻价值35元人民币。</text>
+          <text class='regular-subtitle'>(3)只有当您完成“1分钻礼包”任务的完成条件时，您才能申请使用账户余额内的“1分钻”，用以兑换和支付欲购买的商品，商品类型包括裸钻和快乐钻，不包括重复对1分钻的购买。</text>
+        </view>
+
+        <text class='regular-title'>3.已领取1分钻礼包使用规则说明</text>
+        <view class='regular-subtitle-border'>
+          <text class='regular-subtitle'>(1)账户内已领取的1分钻礼包仅能作为Blingbling Stars内兑换和支付下单时使用。</text>
+          <text class='regular-subtitle'>(2)已领取的1分钻礼包暂时无有效期。</text>
+          <text class='regular-subtitle'>(3)您创建新订单时，已领取的“1分钻礼包”自动兑换成当前账户钻石余额，该账户钻石余额可优先用于购买商品的订单支付，若该笔订单的支付金额高于当前账户的钻石余额，您可以通过2种途径完成订单支付：一、购买更多数量的1分钻兑换 二、选择第三方支付方式；只有当实际支付金额等同于订单金额，才能完成订单支付流程。</text>
+          <text class='regular-subtitle'>(4)您邀请助力的用户越多，已支付的订单越多，获得的1分钻礼包就越多。</text>
+          <text class='regular-subtitle'>(5)任何达成1分钻礼包任务获得的1分钻，可以支付、赠送、提货，不得提现至银行卡或支付宝内。</text>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='custom-button red-gradient-button footer-button' bindtap='closeModal' hidden='{{!showModal}}'>朕知道了</view>
+    <!-- <view class='close-border'>
+      <image class='close-image' src='/image/close.png' bindtap='closeModal'></image>
+      <view class='close-sep'></view>
+    </view> -->
+  </view>
+<!-- </view> -->

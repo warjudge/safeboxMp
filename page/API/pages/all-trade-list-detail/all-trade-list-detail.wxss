@@ -1,0 +1,144 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    min-height: 100%;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 0 10rpx 30rpx 10rpx;
+    background-color: #fff;
+}
+.header {
+    width: 100%;
+    height: 68rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24rpx;
+    border-bottom: 2px solid #f2f2f2;
+    color: #C5C5C5;
+}
+.header-more {
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.more-left {
+    font-size: 26rpx;
+}
+.left-top,.left-center {
+    /*font-size: ;*/
+    color: #C5C5C5;
+}
+.content {
+    box-sizing: border-box;
+    padding: 0 20rpx;
+}
+.con-list {
+    height: 210rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*border-bottom: 1px solid #ccc;*/
+}
+.list-img {
+    width: 254rpx;
+    height: 170rpx;
+}
+.cus-footer {
+    margin-top: 200rpx;
+    display: flex;
+    align-content: center;
+}
+
+.header-contact {
+    height: 90rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contact-left {
+    display: flex;
+    justify-content: space-between;
+}
+.contact-avatar {
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 30rpx;
+}
+.contact-phone {
+    margin-left: 40rpx;
+    display: flex;
+    align-items: center;
+    /*border: 1rpx solid #ccc;*/
+}
+.header-info {
+    height: 200rpx;
+    width: 100%;
+    font-size: 26rpx;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.list-left {
+    display: flex;
+    align-items: center;
+}
+.list-state {
+    margin-left: 30rpx;
+    width: 86rpx;
+    height: 40rpx;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    text-align: center;
+}
+.list-state.one {
+     background-color: #009944;
+ }
+.list-state.two {
+    background-color: #FFCC00;
+}
+.list-state.three {
+    background-color: #CC0000;
+}
+
+.auth-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-top-border {
+    height: 300rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.auth-text {
+    font-size: 30rpx;
+    color: #4a4a4a;
+}
+
+.auth-button {
+    width: 260rpx;
+    height: 80rpx;
+    font-size: 30rpx;
+    color: #fff;
+    border-radius: 20rpx;
+    background-image: linear-gradient(102deg, #fd9b8a, #fd5d6f);
+    margin-top: 99rpx;
+}
+
+.auth-button::after {
+    border: none;
+}
+

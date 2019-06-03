@@ -1,0 +1,48 @@
+@import "../../../common/index.wxss";
+@import "/page/common/css/modal.wxss";
+@import "/page/common/css/product.wxss";
+.cus-view {
+    width: 100%;
+    min-height: 100%;
+    background-color: #fff;
+    padding: 0 38rpx 0 38rpx;
+    box-sizing: border-box;
+}
+.package-line {
+    height: 132rpx;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-bottom: 2rpx solid #CDCDCD;
+    position: relative;
+}
+.line-right {
+    padding-left: 10rpx;
+    width: 50%;
+}
+.line-left {
+    width: 50%;
+    padding-left: 50%;
+}
+.pri-price {
+    position: absolute;
+    color:#C5C5C5;
+    text-decoration:line-through;
+    font-size: 24rpx;
+    bottom: 10rpx;
+    right: 82rpx;
+}
+.on-sale {
+    font-size: 16rpx;
+    padding: 6rpx 12rpx;
+    border-radius: 10rpx;
+    background-color: #FD6070;
+    color: #fff;
+    position: absolute;
+    top: 36rpx;
+    right: 10rpx;
+}
+.cus-footer {
+    margin-top: 280rpx;
+}

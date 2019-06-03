@@ -1,0 +1,62 @@
+<view class="all-screen" hidden='{{showError}}'>
+    <view class="header">
+        <view>订单号:{{detail.number}}</view>
+        <view>{{detail.createTime}}</view>
+    </view>
+    <view class="header-contact">
+        <view class="contact-left">
+            <image class="contact-avatar" src="{{detail.lendAvatarUrl}}"></image>
+            <view style="margin-left: 30rpx;color: #c5c5c5">{{detail.lenderName}}</view>
+            <!--<view class="contact-phone">联系他</view>-->
+            <!--<view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;">催还</view>-->
+        </view>
+        <view style="margin-right: 30rpx;">{{detail.state}}</view>
+    </view>
+    <view class="header-info"> 
+        <view style="margin-left: 30rpx;color: #C5C5C5;">借出日期：{{detail.lendTime}}</view>
+        <view style="margin-left: 30rpx;color: #C5C5C5;">归还日期：{{detail.endTime}}</view>
+        <view style="margin-left: 30rpx;color: #C5C5C5;">
+            <text style="margin-right: 30rpx;">总计</text>
+            <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #C5C5C5;">件商品</text></text>
+            <text style="margin-right: 100rpx;color: #CC0000;">￥{{detail.price}}</text>
+            <text style="margin-right: 50rpx;color: #C5C5C5;">已卖<text style="color: #CC0000;">{{item.soldAmount?item.soldAmount:'0'}}</text>件商品</text>
+            <text style="margin-right: 50rpx;color: #CC0000;">￥{{item.soldPrice?item.soldPrice:'0'}}</text>
+        </view>
+    </view>
+    <view class="content">
+        <checkbox-group bindchange="checkboxChange">
+            <view class="con-list" wx:for="{{detail.goodsList}}" wx:key="{{item.hash}}">
+                <!--<image class="list-img" src="../../../../image/wechat.png"></image>-->
+
+                <view class="list-left">
+                    <checkbox value="{{index}}" checked="{{item.selected}}" wx:if="{{item.state==='借出中'&&isSelect}}" />
+                    <image class="list-img" src="{{item.imageUrl}}"></image>
+                    <view class="{{item.state==='借出中'?'list-state':item.state==='已卖'?'list-state one':item.state==='已还'?'list-state two':item.state==='逾期'?'list-state three':'list-state'}}">{{item.state==='借出中'?'':item.state}}</view>
+                </view>
+
+                <view class="list-right">
+                    <view style="text-align: right;">￥{{item.price}}</view>
+                    <view style="font-size: 20rpx;">{{item.endTime}}</view>
+                </view>
+            </view>
+        </checkbox-group>
+    </view>
+    <view class="cus-footer" hidden="{{detail.state==='已完成'}}">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="selectSold" hidden="{{isSelect}}">选择已卖</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" hidden="{{!isSelect}}" bindtap="forSureSold">确认已卖({{selected.length}})</button>
+    </view>
+    <view class="cus-footer" hidden="{{detail.state!=='已完成'}}">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
+    </view>
+</view>
+
+<view class='auth-view' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>链接错误或订单失效</text>
+        <text class='auth-text'></text>
+    </view>
+    <!--<button class='auth-button' bindtap='retry'>重试</button>-->
+</view>

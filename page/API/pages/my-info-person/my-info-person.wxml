@@ -1,0 +1,92 @@
+<scroll-view class='all-screen' wx:if="{{userType == '1'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">{{infoData.nickName}}</text>
+            <!--<view class="header-pos">续费</view>-->
+        </view>
+    </view>
+    <view class="content">
+         <view class="con-line">
+             <view class="left">真实姓名</view>
+             <view class="right"> {{infoData.realName}}</view>
+         </view>
+         <view class="con-line">
+             <view class="left">身份证号</view>
+             <view class="right">{{infoData.idCard}}</view>
+         </view>
+        <view class="con-line">
+            <view class="left">手机号</view>
+            <view class="center">{{infoData.phoneNumber}}</view>
+            <view class="right btn" bindtap="goToChangePhone">换绑</view>
+        </view>
+    </view>
+    <!--<view class="cus-footer">-->
+        <!--<button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color: #999;">退出登录</button>-->
+    <!--</view>-->
+
+</scroll-view>
+
+<scroll-view class='all-screen' wx:if="{{userType == '2'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">{{infoData.nickName}}</text>
+            <!--<view class="header-pos">续费</view>-->
+        </view>
+    </view>
+    <view class="content">
+        <view class="con-line">
+            <view class="left">公司名称</view>
+            <view class="right"> {{infoData.company}}</view>
+        </view>
+        <view class="con-line">
+            <view class="left">手机号</view>
+            <view class="center">{{infoData.phoneNumber}}</view>
+            <view class="right btn" bindtap="goToChangePhone">换绑</view>
+        </view>
+        <view style="margin-bottom: 40rpx;margin-top: 40rpx;">营业执照</view>
+        <view>
+            <image src="{{infoData.businessLicense}}" style="width: 100%;height: 380rpx;"></image>
+        </view>
+    </view>
+</scroll-view>
+
+<scroll-view class='all-screen' wx:if="{{userType == '3'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">{{infoData.nickName}}</text>
+            <!--<view class="header-pos">续费</view>-->
+        </view>
+    </view>
+    <view class="content">
+        <view class="con-line">
+            <view class="left">真实姓名</view>
+            <view class="right"> {{infoData.realName}}</view>
+        </view>
+        <view class="con-line">
+            <view class="left">身份证号</view>
+            <view class="right">{{infoData.idCard}}</view>
+        </view>
+        <view class="con-line">
+            <view class="left">手机号</view>
+            <view class="center">{{infoData.phoneNumber}}</view>
+            <view class="right btn" bindtap="goToChangePhone">换绑</view>
+        </view>
+        <view class="con-line">
+            <view class="left">公司名称</view>
+            <view class="right">{{infoData.company}}</view>
+        </view>
+    </view>
+    <!--<view class="cus-footer">-->
+    <!--<button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color: #999;">退出登录</button>-->
+    <!--</view>-->
+
+</scroll-view>

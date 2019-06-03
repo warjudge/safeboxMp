@@ -1,0 +1,72 @@
+<scroll-view class='all-screen' hidden="{{step !== 'first'}}">
+    <view class="content">
+        <view class="con-line" wx:for="{{lists}}" wx:key="{{item.id}}" data-index="{{index}}" bindlongtap="showDel" hidden="{{lists.length===0}}">
+            <view class="left-name">{{item.simpleName}}</view>
+            <view class="{{item.status==='已停用'?'left-state':(item.status==='正常'?'left-state normal':'left-state yet')}}">{{item.status}}</view>
+
+            <view class="right-del" hidden="{{!item.showDel}}" data-path="{{item.deletePath}}" bindtap="delMySon">删除</view>
+            <view class="{{item.status==='已停用'?'right-state':(item.status==='正常'?'right-state normal':'right-state yet')}}"
+                  hidden="{{!item.valid&&item.status==='未激活'}}" data-index="{{index}}" bindtap="operateMySon">
+                {{item.status==='已停用'?'正常':(item.status==='正常'?'停用':'邀请')}}
+            </view>
+        </view>
+        <!--<view class="con-line" bindlongtap="showDel">-->
+            <!--<view class="left-name">子账户</view>-->
+            <!--<view class="left-state">已停用</view>-->
+
+            <!--<view class="right-del">删除</view>-->
+            <!--<view class="right-state">启用</view>-->
+        <!--</view>-->
+        <!--<view class="con-line">-->
+            <!--<view class="left-name">子账户</view>-->
+            <!--<view class="left-state">已停用</view>-->
+
+            <!--&lt;!&ndash;<view class="right-del">删除</view>&ndash;&gt;-->
+            <!--<view class="right-state">启用</view>-->
+        <!--</view>-->
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' bindtap="toSecond" style="width: 596rpx;border-radius:47rpx;margin-bottom: 0;margin: 0 auto;margin-top: 108rpx;background-image: url();background-color:#FD6070;">添加子账户</button>
+    </view>
+</scroll-view>
+
+<scroll-view class='all-screen' style="background-color:#fff;" hidden="{{step !== 'second'}}">
+    <view class="haeder second">选择身份添加子账户</view>
+    <view class="content" style="background-color:#fff;">
+        <checkbox-group bindchange="checkboxChange">
+            <view class="sel-item">
+                <image src="/image/dianyuan.png" class="sel-img"></image>
+                <checkbox class="sel-che" value="店员" checked />
+                <view class="sel-txt">店员</view>
+            </view>
+        </checkbox-group>
+        <view class='input-border' style="margin-left: 77rpx;margin-top: 200rpx;">
+            <!--<image class='input-icon' src='/image/phone.png'></image>-->
+            <input type='text' class='input' value='' bindinput='setRoleName' name="roleName" placeholder='请输入店员昵称'></input>
+        </view>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' bindtap="getNewerId" style="width: 596rpx;border-radius:47rpx;margin-bottom: 0;margin: 0 auto;margin-top: 58rpx;background-image: url();background-color:#FD6070;">下一步</button>
+    </view>
+</scroll-view>
+
+<scroll-view class='all-screen' style="background-color:#fff;" hidden="{{step !== 'finish'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <view style="font-size: 34rpx;text-align: center">店长 {{pname}} 邀请你加入</view>
+            <view style="font-size: 34rpx;text-align: center">{{pcompany}}</view>
+            <!--<view class="header-pos">续费</view>-->
+        </view>
+    </view>
+    <view class="content">
+        <image class="con-code" src="{{erCodeUrl}}"></image>
+        <view class="code-tip">扫描二维码加入</view>
+    </view>
+    <view class="cus-footer">
+        <button hidden="{{isShowShare}}" class='modal-1-button input-button1' open-type="share" data-name="pageShare" style="margin-bottom: 0;margin: 0 auto;margin-top: 50rpx">发送给微信联系人</button>
+        <view class="time-tip">二维码有效期为2小时</view>
+    </view>
+</scroll-view>

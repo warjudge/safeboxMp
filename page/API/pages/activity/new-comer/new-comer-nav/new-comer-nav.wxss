@@ -1,0 +1,143 @@
+/* page/API/pages/activity/new-comer/new-comeer-nav/new-comer-nav.wxss */
+@import "/page/common/css/modal.wxss";
+.top-border {
+  height: 284rpx;
+  width: 750rpx;
+  position: relative;
+}
+
+.top-back {
+  position: absolute;
+  width: 750rpx;
+  height: 284rpx;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(to right, #fd9b8a, #fd5d6f);
+}
+
+.wave-back {
+  position: absolute;
+  bottom: 0;
+  width: 750rpx;
+  height: 140rpx;
+  z-index: -1;
+}
+
+.top-text-border {
+  display: flex;
+  justify-content: center;
+}
+
+.top-image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-top: 52rpx;
+  margin-left: 15rpx;
+}
+
+.top-text1 {
+  font-size: 28rpx;
+  margin-top: 50rpx;
+  line-height: 28rpx;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.top-text-border1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.top-text2 {
+  font-size: 72rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.card-border-large {
+}
+
+.twoline-list-item {
+  height: 140rpx;
+  width: 610rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid#e5e5e5;
+}
+
+.twoline-list-item:last-child {
+  border-bottom: none;
+}
+
+.twoline-left {
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.twoline-line1 {
+  font-size: 30rpx;
+}
+
+.twoline-line2 {
+  font-size: 24rpx;
+  color: #fd5d6f;
+}
+
+.twoline-line3 {
+  font-size: 24rpx;
+  color: #4a4a4a;
+}
+
+.twoline-right {
+  height: 140rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.twoline-button {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  border-radius: 20rpx;
+  background-image: linear-gradient(to right, #fd9b8a, #fd5d6f);
+  padding: 0;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.twoline-button::after {
+  border: none;
+}
+.twoline-button[disabled]{
+  color: #fff;
+  background-color: transparent;
+  background-image: linear-gradient(to right, #fd9b8a, #F67470);
+}
+
+.twoline-button[disabled]:not([type]){
+  color: #fff;
+  background-color: transparent;
+  background-image: linear-gradient(to right, #fd9b8a, #F67470);
+}
+
+.ion-forward {
+  color: #999;
+}
+
+.custom-card {
+  margin-top: -30rpx;
+  z-index: 100;
+}
+
+/* modal */
+

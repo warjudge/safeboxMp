@@ -1,0 +1,41 @@
+<view class='auth-view' wx:if="{{step === '1'}}">
+    <form bindsubmit='submitForOld' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
+        <!--<text class='getPhone-title'></text>-->
+        <!--<view class='getPhone-avatar-border'>-->
+            <!--<open-data class='getPhone-avatar' type="userAvatarUrl"></open-data>-->
+        <!--</view>-->
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
+            <input style="width:92%;" type='number' maxlength='11' class='input' disabled value='{{oldPhone}}' bindinput='setOldPhone' name="oldPhone" placeholder=''></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
+            <view class='input-right' style="width:92%;">
+                <input type='number' maxlength='6' class='input input1' bindinput='setOldCode' name="oldCode" value='' placeholder='请输入验证码'></input>
+                <button class='input-button' bindtap='getOldCode' disabled='{{!canGetOldCode}}'>{{oldCodeButton}}</button>
+            </view>
+        </view>
+        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindOldPhone}}' form-type='submit'>提交</button>
+    </form>
+</view>
+
+<view class='auth-view' wx:else>
+    <form bindsubmit='submitForNew' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
+        <!--<text class='getPhone-title'></text>-->
+        <!--<view class='getPhone-avatar-border'>-->
+        <!--<open-data class='getPhone-avatar' type="userAvatarUrl"></open-data>-->
+        <!--</view>-->
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
+            <input style="width:92%;" type='number' maxlength='11' class='input' value='' bindinput='setNewPhone' name="newPhone" placeholder='请输入新的手机号'></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
+            <view class='input-right' style="width:92%;">
+                <input type='number' maxlength='6' class='input input1' bindinput='setNewCode' name="newCode" value='' placeholder='请输入验证码'></input>
+                <button class='input-button' bindtap='getNewCode' disabled='{{!canGetNewCode}}'>{{newCodeButton}}</button>
+            </view>
+        </view>
+        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindNewPhone}}' form-type='submit'>提交</button>
+    </form>
+</view>

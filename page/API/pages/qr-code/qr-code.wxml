@@ -1,0 +1,25 @@
+<view class="all-screen">
+    <view class="content">
+        <image class="big-img" src="{{goodsList[0].imageUrl}}"></image>
+    </view>
+    <view class="cus-footer">
+        <image class="qr-img" src="{{url}}" alt=""></image>
+        <view>
+            <text style="display: block;text-align: right">共{{goodsList.length}}件</text>
+            <text style="display: block;text-align: right;color: red;margin-bottom: 40rpx;">￥{{price}}</text>
+            <view class="txt-btn-box">
+                <image class="sml-img" src="../../../../image/wechatHL.png"></image>
+                <view class='txt-btn' bindtap='saveToLocal'>保存到本地</view>
+            </view>
+            <view class="txt-btn-box">
+                <image class="sml-img" src="../../../../image/wechat.png"></image>
+                <!--<view class='txt-btn' bindtap='saveToLocal'>发送给好友</view>-->
+                <button open-type="share" data-name="pageShare" class='txt-btn' style="line-height: 1;height: 30rpx;width: 150rpx;">发送给好友</button>
+
+            </view>
+        </view>
+    </view>
+    <view class="img-canvas">
+        <canvas style="height: 603px;width: 375px;" canvas-id="qrcanvas" />
+    </view>
+</view>

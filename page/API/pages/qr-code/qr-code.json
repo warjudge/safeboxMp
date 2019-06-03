@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Tunbao宝管家快速租货",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "upload": "../../../component/pages/uploader/upload"
+  }
+}

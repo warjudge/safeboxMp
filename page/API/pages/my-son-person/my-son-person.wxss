@@ -1,0 +1,121 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    height: 100%;
+    /*background-color: #fff;*/
+}
+.content {
+    margin-top: 20rpx;
+    width: 100%;
+    /*background-color: #fff;*/
+    box-sizing: border-box;
+    font-size: 30rpx;
+}
+.con-line{
+    height: 110rpx;
+    /*border-bottom: 2rpx solid #CDCDCD;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    color: #fff;
+    /*justify-content: space-between;*/
+    /*text-align: center;*/
+    margin-top: 20rpx;
+}
+.left-name{
+    margin-left: 38rpx;
+    display: inline-block;
+    line-height: 110rpx;
+    font-size: 30rpx;
+    margin-right: 26rpx;
+    color: #010101;
+}
+.left-state {
+    display: inline-block;
+    width: 96rpx;
+    height: 36rpx;
+    background-color: #CC0000;
+    font-size: 20rpx;
+    text-align: center;
+}
+.left-state.normal {
+    background-color: #009944;
+}
+.left-state.yet {
+    background-color: #FFCC00;
+}
+.right-state {
+    display: inline-block;
+    width: 112rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #009944;
+    border-radius:25rpx;
+    font-size: 24rpx;
+    float: right;
+    margin-right: 38rpx;
+    margin-top: 30rpx;
+    text-align: center;
+}
+.right-state.normal {
+    background-color: #CC0000;
+}
+.right-state.yet {
+    background-color: #FD6070;
+}
+.right-del{
+    display: inline-block;
+    line-height: 110rpx;
+    text-align: center;
+    height: 100%;
+    width: 124rpx;
+    font-size: 28rpx;
+    background-color: #CC0000;
+    float: right;
+}
+
+.haeder.second {
+    margin-top: 20rpx;
+    font-size:36rpx;
+    font-weight:bold;
+    color: #353535;
+    padding-left: 77rpx;
+}
+.sel-item {
+    margin-top: 200rpx;
+    height: 144rpx;
+    position: relative;
+}
+.sel-img {
+    display: block;
+    width: 144rpx;
+    height: 144rpx;
+    margin: 0 auto;
+}
+.sel-che {
+    position: absolute;
+    bottom: 0;
+    left: 400rpx;
+}
+.sel-txt {
+    text-align: center;
+}
+.con-code {
+    width: 244rpx;
+    height: 244rpx;
+    display: block;
+    margin: 0 auto;
+    margin-top: 74rpx;
+}
+.code-tip {
+    margin-top: 60rpx;
+    font-size:32rpx;
+    color: #C5C5C5;
+    text-align: center;
+}
+.time-tip {
+    font-size:28rpx;
+    color: #C5C5C5;
+    margin-top: 110rpx;
+    text-align: center;
+}
+

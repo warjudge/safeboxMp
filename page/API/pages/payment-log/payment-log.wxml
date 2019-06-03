@@ -1,0 +1,24 @@
+<scroll-view class='all-screen'>
+    <view class="content">
+         <view class="con-line" wx:for="{{recordData.beans}}" hidden="{{item.term===7}}">
+             <view class="top">
+                 <view class="left">宝管家超级会员（{{item.term+item.termUnit}}）</view>
+                 <view class="right">￥{{item.price}}</view>
+             </view>
+             <view class="bottom">
+                 <view class="left">{{item.state}}</view>
+                 <view class="right">{{item.payTime}}</view>
+             </view>
+         </view>
+        <!--<view class="con-line">-->
+            <!--<view class="top">-->
+                <!--<view class="left">宝管家超级会员（1个月）</view>-->
+                <!--<view class="right">￥170</view>-->
+            <!--</view>-->
+            <!--<view class="bottom">-->
+                <!--<view class="left">交易成功</view>-->
+                <!--<view class="right">2019-04-06 14:36</view>-->
+            <!--</view>-->
+        <!--</view>-->
+    </view>
+</scroll-view>

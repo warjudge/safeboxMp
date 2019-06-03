@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "提交凭证",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "upload": "../../../component/pages/uploader/upload"
+  }
+}

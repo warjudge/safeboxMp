@@ -1,0 +1,115 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.header {
+    background-color: #fff;
+    position: relative;
+}
+.header-name {
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 56rpx;
+}
+.header-pos {
+    position: absolute;
+    display: inline-block;
+    width: 56rpx;
+    height: 29rpx;
+    font-size: 16rpx;
+    line-height: 29rpx;
+    margin-left: 20rpx;
+    bottom: 68rpx;
+    background-color: #FD6070;
+    text-align: center;
+    border-radius:6rpx
+}
+.header-news {
+    position: absolute;
+    top: 6rpx;
+    left: 20rpx;
+    background-color: #fff;
+    padding: 6rpx 40rpx;
+    border: 2rpx solid #000;
+    border-radius: 20rpx;
+    font-size: 20rpx;
+}
+.content {
+    background-color: #fff;
+}
+.tab-bar {
+    /*padding: 10rpx 0;*/
+    display: flex;
+    padding-bottom: 40rpx;
+}
+.tab-bar-item {
+    flex: 1;
+    text-align: center;
+    height: 106rpx;
+    line-height: 106rpx;
+    background-color: #F2F2F2;
+    color: #353535;
+    position: relative;
+}
+.tab-bar-item.tab-bar-item-select {
+    background-color: #FD6070;
+    color: #fff;
+}
+.three-ang-left {
+    border-style: solid;
+    border-width: 108rpx 54rpx 0rpx 54rpx;
+    border-color: #fff transparent transparent transparent;
+    width: 0rpx;
+    height: 0rpx;
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+}
+.three-ang-right {
+    border-style: solid;
+    border-width: 108rpx 54rpx 0rpx 54rpx;
+    border-color: #fff transparent transparent transparent;
+    width: 0rpx;
+    height: 0rpx;
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+}
+.sum-line {
+    height: 238rpx;
+    display: flex;
+}
+.sum-item {
+    flex: 1;
+    text-align: center;
+}
+.sum-name,.sum-number {
+    display: block;
+    width: 100%;
+    font-size: 34rpx;
+    /*font-weight: bold;*/
+}
+.sum-number {
+    font-size: 100rpx;
+}
+.footer-box {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    /*background-color: #fff;*/
+}
+.upload-box {
+    width: 360rpx;
+    height: 180rpx;
+    margin: 0 auto;
+    background-color: skyblue;
+    border-top-left-radius: 180rpx;
+    border-top-right-radius: 180rpx;
+    transform: translateY(28rpx);
+    background-color: #F2F2F2;
+}
+
+

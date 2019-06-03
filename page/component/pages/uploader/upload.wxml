@@ -1,0 +1,27 @@
+<!--component/uploader/upload.wxml-->
+<view class="page__bd">
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                        <view class="weui-uploader__title">{{uploadText}}</view>
+                        <view class="weui-uploader__info">{{files.length}}/{{maxFileCount}}</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                        <view class="weui-uploader__files" id="uploaderFiles">
+                            <block wx:for="{{files}}" wx:key="*this">
+                                <view class="weui-uploader__file" bindlongpress="_deleteImage" data-index="{{index}}" bindtap="_previewImage" id="{{item.hash}}" style="width: {{bigWidth}};height: {{bigHeight}};">
+                                    <image class="weui-uploader__img" src="{{item.fileUrl}}" mode="aspectFill" style="width: 100%;height: 100%;" />
+                                </view>
+                            </block>
+                        </view>
+                        <view style='display:{{isCanAddFile?"":"none"}};width: {{bigWidth}};height: {{bigHeight}};' class="weui-uploader__input-box">
+                            <view class="weui-uploader__input" bindtap="_chooseImage"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

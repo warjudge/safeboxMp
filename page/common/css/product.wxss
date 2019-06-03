@@ -1,0 +1,137 @@
+/* 产品 */
+
+.product-list-border {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-item-border {
+  width: 320rpx;
+  height: 360rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.item-top-line {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.topright-img {
+  width: 31rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}
+
+.topright-text {
+  font-size: 28rpx;
+  color: #8dbfe2;
+  margin-right: 30rpx;
+}
+
+.item-center-line {
+  width: 200rpx;
+  height: 140rpx;
+  border-radius: 20rpx;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  /* box-shadow: 0px 2px 10px rgba(255, 182, 193, 0.06); */
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-center-inner-image {
+  max-width: 180rpx;
+  max-height: 120rpx;
+}
+
+.center-left {
+  width: 100rpx;
+  height: 140rpx;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-item {
+  font-size: 16rpx;
+  line-height: 26rpx;
+  color: #000;
+  margin-left: 30rpx;
+}
+
+.center-right {
+  width: 100rpx;
+  height: 140rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right-image {
+  width: 48rpx;
+  height: 25rpx;
+  margin-top: 15rpx;
+  margin-right: 15rpx;
+}
+
+.center-right-bottom-img {
+  /* position: absolute;
+  width: 60rpx;
+  height: 40rpx;
+  right: -15rpx;
+  bottom: -8rpx; */
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.item-bottom-line {
+  height: 120rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-line {
+  height: 24rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.text-trade {
+  font-size: 18rpx;
+  color: #000;
+  line-height: 18rpx;
+}
+
+.text-price {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #fd526a;
+}
+
+.text-line-through {
+  width: 100%;
+  text-align: center;
+  height: 18rpx;
+  line-height: 18rpx;
+  font-size: 18rpx;
+  margin-top: 20rpx;
+  text-decoration: line-through;
+  color: #777;
+}

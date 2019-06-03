@@ -1,0 +1,63 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    height: 100%;
+    /*background-color: #fff;*/
+}
+.header {
+    background-color: #fff;
+    position: relative;
+    background-color: #fff;
+}
+.header-name {
+    position: relative;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 100rpx;
+}
+.header-pos {
+    position: absolute;
+    display: inline-block;
+    width: 56rpx;
+    height: 29rpx;
+    font-size: 16rpx;
+    line-height: 29rpx;
+    margin-left: 20rpx;
+    bottom: 112rpx;
+    background-color: #FD6070;
+    text-align: center;
+    border-radius:6rpx
+}
+.content {
+    margin-top: 20rpx;
+    width: 100%;
+    background-color: #fff;
+    padding: 0 60rpx;
+    box-sizing: border-box;
+}
+.con-line{
+    height: 115rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left {
+    width: 85%;
+    display: flex;
+    align-items: center;
+}
+.center {
+    width: 50rpx;
+    height: 50rpx;
+    background-color: #FD6070;
+    border-radius: 25rpx;
+    text-align: center;
+}
+.cus-footer {
+    margin-top: 288rpx;
+}
+.cus-footer.company {
+    margin-top: 231rpx;
+}
+
+

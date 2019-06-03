@@ -1,0 +1,39 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.content {
+    margin-top: 20rpx;
+    width: 100%;
+    background-color: #fff;
+    padding: 0 38rpx;
+    box-sizing: border-box;
+    font-size: 30rpx;
+}
+.con-line{
+    height: 110rpx;
+    padding-top: 52rpx;
+    border-bottom: 2rpx solid #CDCDCD;
+}
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.right {
+    min-width: 150rpx;
+}
+.bottom {
+    position: relative;
+}
+.is-new{
+    width: 16rpx;
+    height: 16rpx;
+    background:#FD6070;
+    border-radius:50%;
+    position: absolute;
+    right: 0;
+}
+

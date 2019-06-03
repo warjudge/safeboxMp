@@ -1,0 +1,168 @@
+<view class="all-screen" hidden="{{!(detail.state === '待借出'&&!showError)}}">
+<!--<view class="all-screen" hidden="true">-->
+    <view class="header">
+        <view>订单号:{{detail.number}}</view>
+        <view>{{detail.createTime}}</view>
+    </view>
+    <view class="header-more">
+        <view class="more-left">
+            <view class="left-top" hidden="{{!detail.returnTime}}">预计归还：{{detail.returnTime}}</view>
+            <view class="left-bottom">
+                <text style="margin-right: 30rpx;color: #c5c5c5">总计</text>
+                <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>
+                <text style="color: #CC0000;">￥{{detail.price}}</text>
+             </view>
+        </view>
+        <view>{{detail.state}}</view>
+    </view>
+    <view class="content">
+        <view class="con-list" wx:for="{{detail.goodsList}}" wx:key="{{item.hash}}">
+            <!--<image class="list-img" src="../../../../image/wechat.png"></image>-->
+            <image class="list-img" src="{{item.imageUrl}}"></image>
+            <view>￥{{item.price}}</view>
+        </view>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;" hidden="{{isScan}}" bindtap="closeOrder">关闭订单</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;background-image: none;background-color:#FD6070;" hidden="{{isScan}}" bindtap="showQRCode">二维码</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;background-image: none;background-color:#FD6070;" hidden="{{!isScan}}" bindtap="lendGoods">确认租借</button>
+    </view>
+</view>
+
+<view class="all-screen" hidden="{{!(detail.state === '已关闭'&&!showError)}}">
+    <view class="header">
+        <view>订单号:{{detail.number}}</view>
+        <view>{{detail.createTime}}</view>
+    </view>
+    <view class="header-more">
+        <view class="more-left">
+            <view class="left-top">预计归还：{{detail.lendTime}}</view>
+            <view class="left-center">关闭日期：{{detail.endTime}}</view>
+            <view class="left-bottom" style="color: #c5c5c5;">
+                <text style="margin-right: 30rpx;">总计</text>
+                <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>
+                <text style="color: #CC0000;">￥{{detail.price}}</text>
+            </view>
+        </view>
+        <view>{{detail.state}}</view>
+    </view>
+    <view class="content">
+        <view class="con-list" wx:for="{{detail.goodsList}}" wx:key="{{item.hash}}">
+            <!--<image class="list-img" src="../../../../image/wechat.png"></image>-->
+            <image class="list-img" src="{{item.imageUrl}}"></image>
+            <view>￥{{item.price}}</view>
+        </view>
+    </view>
+</view>
+
+<view class="all-screen" hidden="{{!(detail.state === '已完成'&&!showError)}}">
+<!--<view class="all-screen">-->
+    <view class="header">
+        <view>订单号:{{detail.number}}</view>
+        <view>{{detail.createTime}}</view>
+    </view>
+    <view class="header-contact">
+        <view class="contact-left">
+            <image class="contact-avatar" src="{{detail.borrowAvatarUrl}}"></image>
+            <view style="margin-left: 30rpx;color: #c5c5c5;">{{detail.borrowerName}}</view>
+            <!--<view class="contact-phone" bindtap="callHim">-->
+                <!--<image src="/image/person/dianhua.png" style="width: 39rpx;height: 39rpx;"></image>-->
+            <!--</view>-->
+        </view>
+        <view style="margin-right: 30rpx;">{{detail.state}}</view>
+    </view>
+    <view class="header-info">
+        <view style="margin-left: 30rpx;color: #c5c5c5;">借出日期：{{detail.lendTime}}</view>
+        <view style="margin-left: 30rpx;color: #c5c5c5;">归还日期：{{detail.endTime}}</view>
+        <view style="margin-left: 30rpx;color: #c5c5c5;">
+            <text style="margin-right: 30rpx;">总计</text>
+            <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>
+            <text style="color: #CC0000;margin-right: 100rpx;">￥{{detail.price}}</text>
+            <text style="margin-right: 50rpx;color: #c5c5c5">已卖<text style="color: #CC0000">{{detail.soldAmount}}</text>件商品</text>
+            <text style="margin-right: 50rpx;color: #CC0000;">￥{{item.soldPrice?item.soldPrice:'0'}}</text>
+            <!--<text style="color: #CC0000;">{{detail.price}}</text>-->
+        </view>
+    </view>
+    <view class="content">
+        <view class="con-list" wx:for="{{detail.goodsList}}" wx:key="{{item.hash}}">
+            <!--<image class="list-img" src="../../../../image/wechat.png"></image>-->
+            <view class="list-left">
+                <image class="list-img" src="{{item.imageUrl}}"></image>
+                <view class="{{item.state==='借出中'?'list-state':item.state==='已卖'?'list-state one':item.state==='已还'?'list-state two':item.state==='逾期'?'list-state three':'list-state'}}">{{item.state==='借出中'?'':item.state}}</view>
+            </view>
+
+            <view class="list-right">
+                <view>￥{{item.price}}</view>
+                <view style="font-size: 20rpx;">{{item.endTime}}</view>
+            </view>
+
+        </view>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
+    </view>
+</view>
+
+<view class="all-screen" hidden="{{!(detail.state === '借出中'&&!showError)}}">
+<!--<view class="all-screen">-->
+    <view class="header">
+        <view>订单号:{{detail.number}}</view>
+        <view>{{detail.createTime}}</view>
+    </view>
+    <view class="header-contact">
+        <view class="contact-left">
+            <image class="contact-avatar" src="{{detail.borrowAvatarUrl}}"></image>
+            <view style="margin-left: 30rpx;color: #c5c5c5;">{{detail.borrowerName}}</view>
+            <view class="contact-phone" bindtap="callHim" hidden="{{!!!detail.isOverdue}}">
+                <image src="/image/person/dianhua.png" style="width: 39rpx;height: 39rpx;"></image>
+            </view>
+            <view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;" bindtap="reminder">催还</view>
+        </view>
+        <view style="margin-right: 30rpx;">{{detail.state}}</view>
+    </view>
+    <view class="header-info">
+        <view style="margin-left: 30rpx;color: #c5c5c5;">借出日期：{{detail.lendTime}}</view>
+        <view style="margin-left: 30rpx;color: #c5c5c5;">归还日期：{{detail.endTime}}</view>
+        <view style="margin-left: 30rpx;color: #c5c5c5;">
+            <text style="margin-right: 30rpx;">总计</text>
+            <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>
+            <text style="color: #CC0000;margin-right: 100rpx;">￥{{detail.price}}</text>
+            <text style="margin-right: 50rpx;color: #c5c5c5">已卖<text style="color: #CC0000">{{detail.soldAmount}}</text>件商品</text>
+            <text style="margin-right: 50rpx;color: #CC0000;">￥{{item.soldPrice?item.soldPrice:'0'}}</text>
+        </view>
+    </view>
+    <view class="content">
+        <checkbox-group bindchange="checkboxChange">
+            <view class="con-list" wx:for="{{detail.goodsList}}" wx:key="{{item.hash}}">
+                <!--<image class="list-img" src="../../../../image/wechat.png"></image>-->
+                <view class="list-left">
+                    <checkbox value="{{index}}" checked="{{item.selected}}" wx:if="{{isSelect&&item.state!=='已卖'&&item.state!=='已还'}}" />
+                    <image class="list-img" src="{{item.imageUrl}}"></image>
+                    <view class="{{item.state==='借出中'?'list-state':item.state==='已卖'?'list-state one':item.state==='已还'?'list-state two':item.state==='逾期'?'list-state three':'list-state'}}">{{item.state==='借出中'?'':item.state}}</view>
+                </view>
+
+                <view class="list-right">
+                    <view style="text-align: right;">￥{{item.price}}</view>
+                    <view style="font-size: 20rpx;">{{item.endTime}}</view>
+                </view>
+
+            </view>
+        </checkbox-group>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="selectSold" hidden="{{isSelect}}">选择归还</button>
+        <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" hidden="{{!isSelect}}" bindtap="forSureGiveBack">确认归还({{selected.length}})</button>
+
+    </view>
+</view>
+
+<view class='auth-view' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>链接错误或订单失效</text>
+        <text class='auth-text'></text>
+    </view>
+    <!--<button class='auth-button' bindtap='retry'>重试</button>-->
+</view>

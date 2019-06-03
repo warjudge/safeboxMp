@@ -1,0 +1,106 @@
+<scroll-view class='all-screen' wx:if="{{mineData.userType == '1'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>
+            <view class="header-pos" bindtap="goToLongTime">续费</view>
+        </view>
+    </view>
+    <view class="content">
+         <view class="con-line" bindtap="goToMyInfoPerson">
+             <view class="left">
+                 <image src="/image/person/gerenicon.png" style="width: 32rpx;height: 34rpx;"></image>
+                 <view style="margin-left: 20rpx">个人信息</view>
+             </view>
+             <view class="right">
+                 <image src="/image/person/fanhui.png" style="width: 16rpx;height: 24rpx;transform: rotateY(180deg)"></image>
+             </view>
+         </view>
+         <view class="con-line" bindtap="goToMessage">
+             <view class="left">
+                 <image src="/image/person/messageicon.png" style="width: 32rpx;height: 30rpx;"></image>
+                 <view style="margin-left: 20rpx">消息提醒</view>
+             </view>
+             <view class="center" hidden="{{mineData.count===0}}">{{mineData.count}}</view>
+             <view class="right">
+                 <image src="/image/person/fanhui.png" style="width: 16rpx;height: 24rpx;transform: rotateY(180deg)"></image>
+             </view>
+         </view>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color: #999;width:596rpx;border-radius:47rpx;" bindtap="loginOut">退出登录</button>
+    </view>
+</scroll-view>
+
+<scroll-view class='all-screen' wx:if="{{mineData.userType == '2'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>
+            <view class="header-pos" bindtap="goToLongTime">续费</view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="con-line" bindtap="goToMyInfoPerson">
+            <view class="left">
+                <image src="/image/person/gerenicon.png" style="width: 32rpx;height: 34rpx;"></image>
+                <view style="margin-left: 20rpx">商户信息</view>
+            </view>
+            <view class="right">
+                <image src="/image/person/fanhui.png" style="width: 16rpx;height: 24rpx;transform: rotateY(180deg)"></image>
+            </view>
+        </view>
+        <view class="con-line" bindtap="goToMessage">
+            <view class="left">
+                <image src="/image/person/messageicon.png" style="width: 32rpx;height: 30rpx;"></image>
+                <view style="margin-left: 20rpx">消息提醒</view>
+            </view>
+            <view class="center" hidden="{{mineData.count===0}}">{{mineData.count}}</view>
+            <view class="right">
+                <image src="/image/person/fanhui.png" style="width: 16rpx;height: 24rpx;transform: rotateY(180deg)"></image>
+            </view>
+        </view>
+        <view class="con-line" bindtap="goToMySonPerson">
+            <view class="left">
+                <image src="/image/person/mysonicon.png" style="width: 32rpx;height: 32rpx;"></image>
+                <view style="margin-left: 20rpx">子账户管理</view>
+            </view>
+            <view class="right">
+                <image src="/image/person/fanhui.png" style="width: 16rpx;height: 24rpx;transform: rotateY(180deg)"></image>
+            </view>
+        </view>
+    </view>
+    <view class="cus-footer.company">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color: #999;width:596rpx;border-radius:47rpx;" bindtap="loginOut">退出登录</button>
+    </view>
+</scroll-view>
+
+<scroll-view class='all-screen' wx:if="{{mineData.userType == '3'}}">
+    <view class="header">
+        <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
+            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+        </view>
+        <view class="header-name">
+            <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>
+            <!--<view class="header-pos">续费</view>-->
+        </view>
+    </view>
+    <view class="content">
+        <view class="con-line" bindtap="goToMyInfoPerson">
+            <view class="left">个人信息</view>
+            <view class="right"> ></view>
+        </view>
+        <view class="con-line" bindtap="goToMessage">
+            <view class="left">消息提醒</view>
+            <view class="center" hidden="{{mineData.count===0}}">{{mineData.count}}</view>
+            <view class="right"> ></view>
+        </view>
+    </view>
+    <view class="cus-footer">
+        <button class='modal-1-button input-button1' style="margin: 0 auto;background-image: url('');background-color: #999;width:596rpx;border-radius:47rpx;" bindtap="loginOut">退出登录</button>
+    </view>
+</scroll-view>

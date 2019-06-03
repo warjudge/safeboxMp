@@ -1,0 +1,57 @@
+@import "/page/common/css/modal.wxss";
+.all-screen {
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #F2F2F2;
+    background-color: #fff;
+}
+.content {
+    box-sizing: border-box;
+    padding: 0rpx 38rpx;
+}
+.goods-item {
+    width: 100%;
+    padding: 31rpx 0rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #F2F2F2;
+}
+.mini-img {
+    width: 253rpx;
+    height: 169rpx;
+}
+.inp-box {
+    display: flex;
+    align-items: center;
+    padding: 0px 80rpx;
+    border-bottom: 1px solid #F2F2F2;
+}
+.mini-inp {
+    width: 200rpx;
+    height: 72rpx;
+    font-size: 48rpx;
+}
+.placeholder-style {
+    font-size:36rpx;
+    color: #C5C5C5;
+}
+.total {
+    margin-top: 28rpx;
+    text-align: right;
+    font-size: 26rpx;
+    color: #C5C5C5;
+}
+.select-type {
+    margin-top: 56rpx;
+}
+.picker {
+    display: flex;
+    justify-content: space-between;
+}
+.cus-footer {
+    margin-top: 200rpx;
+    display: flex;
+    align-content: center;
+}
+
+

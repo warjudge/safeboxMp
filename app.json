@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "page/API/index",
+    "page/API/pages/my/my",
+    "page/API/pages/home/home",
+    "page/API/pages/relogin/relogin",
+    "page/API/pages/quick-lend/quick-lend",
+    "page/API/pages/qr-code/qr-code",
+    "page/API/pages/all-trade-list/all-trade-list",
+    "page/API/pages/all-trade-list-detail/all-trade-list-detail",
+    "page/API/pages/all-trade-list-borrow/all-trade-list-borrow",
+    "page/API/pages/all-trade-list-detail-borrow/all-trade-list-detail-borrow",
+    "page/API/pages/upload-cert/upload-cert",
+    "page/API/pages/view-cert/view-cert",
+    "page/API/pages/my-info-person/my-info-person",
+    "page/API/pages/my-son-person/my-son-person",
+    "page/API/pages/message/message",
+    "page/API/pages/change-phone/change-phone",
+    "page/API/pages/long-time/long-time",
+    "page/API/pages/payment-log/payment-log"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "演示",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#F2F5F6"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#cdb68a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "page/API/pages/home/home",
+        "iconPath": "image/person/home7.png",
+        "selectedIconPath": "image/person/home9sel.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/API/pages/my/my",
+        "iconPath": "image/person/person9.png",
+        "selectedIconPath": "image/person/person7sel.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 5000000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

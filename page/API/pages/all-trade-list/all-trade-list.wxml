@@ -1,0 +1,58 @@
+<view class="all-screen" hidden='{{showError}}'>
+    <view class="header">
+        <view class="{{type === '1' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="1" bindtap="changeTap">全部({{allLendCount}})</view>
+        <view class="{{type === '2' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="2" bindtap="changeTap">今日应还({{todayLendCount}})</view>
+        <view class="{{type === '3'? 'top-tap top-tap-select': 'top-tap'}}" data-number="3" bindtap="changeTap">逾期未还({{timeOutLendCount}})</view>
+        <view class="{{type === '4' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="4" bindtap="changeTap">结算({{settleLendCount}})</view>
+    </view>
+    <view class="select-type" hidden="{{type !== '1'}}">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+                <view style="font-size: 34rpx;color: #353535;margin-left: 38rpx;">选择订单类型：</view>
+                <view style="margin-right: 38rpx;">{{array[index]}}</view>
+            </view>
+        </picker>
+    </view>
+    <view class="content">
+        <view class="con-list" wx:for="{{tradeList}}" wx:key="{{item.number}}" data-check-path="{{item.checkPath}}" bindtap="goToDetail">
+            <view class="list-top">
+                <view class="top-img">
+                    <image class="img-item" wx:for="{{item.goodsList}}" wx:for-index="index1" wx:for-item="item1" wx:key="{{item1.hash}}" src="{{item1.imageUrl}}" wx:if="{{index1<5}}"></image>
+                    <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
+                    <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
+                    <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
+                    <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
+                    <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
+                </view>
+                <view class="top-number" wx:if="{{type==='1'}}">{{item.amount}}件</view>
+                <view class="top-center" wx:else>
+                    <view class="center-number">{{item.amount}}件</view>
+                    <view class="center-number">{{type === '4' ? '已卖': '待还'}} {{item.notReturnAmount}}件</view>
+                </view>
+                <view class="top-amount">￥ {{item.price}}</view>
+            </view>
+            <view class="list-bottom">
+                <view class="bottom-left">
+                    <image class="bottom-img" src="../../../../image/person/shangjia.png"></image>
+                    <text class="bottom-name">{{item.lenderName}}</text>
+                    <text style="font-size:24rpx;font-weight: bold;color: #c5c5c5;">{{item.createTime}}</text>
+                </view>
+                <view class="bottom-right">
+                    <view class="bottom-states" wx:if="{{!!item.isOverdue}}">逾期</view>
+                    <view style="font-size:34rpx;font-weight: bold;color: #353535;">{{item.state}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cus-footer">
+
+    </view>
+</view>
+
+<view class='all-screen' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>网络错误，请重试</text>
+        <text class='auth-text'></text>
+    </view>
+    <!--<button class='auth-button' bindtap='retry'>重试</button>-->
+</view>
