@@ -23,6 +23,15 @@ Page({
                     goSchemeOrderListPath: res.data.goSchemeOrderListPath
                 });
                 app.globalData.backPath = res.data.goBackPath;
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             this.setData({
@@ -64,16 +73,16 @@ Page({
                         },
                         'fail':function(res){},
                         'complete':function(res){
-                            app.sendGetRequest(res1.data.payPath, {}).then(res => {
-                                console.log(res);
-                                if (res.message === 'success') {
-                                    wx.navigateTo({
-                                        url: `../payment-log/payment-log?recordPath=${res.data.recordPath}`
-                                    })
-                                }
-                            }).catch(err => {
-
-                            });
+                            // app.sendGetRequest(res1.data.payPath, {}).then(res => {
+                            //     console.log(res);
+                            //     if (res.message === 'success') {
+                            //         wx.navigateTo({
+                            //             url: `../payment-log/payment-log?recordPath=${res.data.recordPath}`
+                            //         })
+                            //     }
+                            // }).catch(err => {
+                            //
+                            // });
                         }
                     })
             }
@@ -98,6 +107,15 @@ Page({
                         goSchemeOrderListPath: res.data.goSchemeOrderListPath
                     });
                     app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)

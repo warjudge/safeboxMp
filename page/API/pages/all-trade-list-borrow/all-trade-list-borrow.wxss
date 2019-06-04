@@ -26,6 +26,12 @@
     line-height: 90rpx;
     background-color: #F2F2F2;
 }
+.picker {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 .content {
     box-sizing: border-box;
     padding: 0px 20rpx;
@@ -104,7 +110,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 220rpx;
 }
 /*.cus-footer {*/
     /*margin-top: 200rpx;*/

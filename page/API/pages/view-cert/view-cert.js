@@ -101,6 +101,18 @@ Page({
             voucherList: that.data.certList
         }).then(res => {
             console.log(res);
+            if (res.message === 'success') {
+
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
+            }
         }).catch(err => {
             console.log(err)
         })

@@ -30,10 +30,12 @@ Page({
         uploadText: "上传营业执照",
         files: [],
         maxFileCount: 1,
-        showRegisterComplete: false
+        showRegisterComplete: false,
+        formIdList:[],
+        showSonPersonStop: false
     },
     onReady: function() {
-//获得upload组件，后续直接用upload调用组件方法
+        //获得upload组件，后续直接用upload调用组件方法
         this.upload = this.selectComponent("#upload");
 
     },
@@ -230,6 +232,17 @@ Page({
                                     showRegisterComplete: true,
                                 });
 
+                            }else if(res.data.status === '子账户已被停用'){
+                                that.setData({
+                                    showError: false,
+                                    isHide: false,
+                                    isShowGetPhone: false,
+                                    isFirstLogin: false,
+                                    showPersonRegister: false,
+                                    showCompanyRegister: false,
+                                    showRegisterComplete: false,
+                                    showSonPersonStop: true
+                                });
                             }else if(res.data.status === '需要登录'){
                                 wx.redirectTo({
                                     url: `./pages/relogin/relogin?loginPath=${res.data.loginPath}&sendPath=${res.data.sendPath}&codeInPath=${res.data.codeInPath}&reloginPath=${res.data.reLoginPath}`
@@ -493,6 +506,7 @@ Page({
                             phoneCode: e.detail.value.code,
                             userType: '1',
                             loginStyle: '2',
+                            lists: that.data.formIdList
                             // formId: e.detail.formId
                         }).then(res => {
                             console.log(res);
@@ -567,6 +581,7 @@ Page({
                             businessLicense: that.data.files[0].fileUrl,
                             userType: '2',
                             loginStyle: '2',
+                            lists: that.data.formIdList
                             // formId: e.detail.formId
                         }).then(res => {
                             console.log(res);
@@ -608,5 +623,13 @@ Page({
     },
     retry () {
         this.onLoad();
+    },
+    formSubmit: function(e) {
+        let that = this;
+        if (e.detail.formId != 'the formId is a mock one') {
+            that.data.formIdList.push({ids:e.detail.formId});
+            console.log(that.data.formIdList);
+        }
+        console.log(e.detail)
     }
 })

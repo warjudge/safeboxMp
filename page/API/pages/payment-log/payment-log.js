@@ -27,6 +27,15 @@ Page({
                     recordData : res.data,
                 });
                 app.globalData.backPath = res.data.goBackPath;
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
 

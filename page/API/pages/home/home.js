@@ -9,7 +9,8 @@ Page({
     data: {
         type: true,
         allData: null,
-        files: []
+        files: [],
+        formIdList: []
     },
 
     /**
@@ -46,6 +47,15 @@ Page({
                     app.globalData.firstPath = this.data.allData.firstPath;
                     app.globalData.thirdPath = this.data.allData.thirdPath;
                     app.globalData.backPath = '';
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -61,6 +71,15 @@ Page({
                     app.globalData.firstPath = this.data.allData.firstPath;
                     app.globalData.thirdPath = this.data.allData.thirdPath;
                     app.globalData.backPath = '';
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -186,15 +205,15 @@ Page({
         let that = this;
         let url = '';
         if (e.currentTarget.dataset.type === '1') {
-            url = `../all-trade-list/all-trade-list?allLendPath=${that.data.allData.allLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list/all-trade-list?allLendPath=${that.data.allData.allLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }else if (e.currentTarget.dataset.type === '2') {
-            url = `../all-trade-list/all-trade-list?todayLendPath=${that.data.allData.todayLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list/all-trade-list?todayLendPath=${that.data.allData.todayLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         else if (e.currentTarget.dataset.type === '3') {
-            url = `../all-trade-list/all-trade-list?timeOutLendPath=${that.data.allData.timeOutLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list/all-trade-list?timeOutLendPath=${that.data.allData.timeOutLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         else if (e.currentTarget.dataset.type === '4') {
-            url = `../all-trade-list/all-trade-list?settleLendPath=${that.data.allData.settleLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list/all-trade-list?settleLendPath=${that.data.allData.settleLendPath}&todayLendCount=${that.data.allData.todayLendCount}&timeOutLendCount=${that.data.allData.timeOutLendCount}&allLendCount=${that.data.allData.allLendCount}&settleLendCount=${that.data.allData.settleLendCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         wx.navigateTo({
             url: url,
@@ -214,6 +233,15 @@ Page({
                         wx.navigateTo({
                             url:`../all-trade-list-detail/all-trade-list-detail?orderNumber=${orderNumber}&codeInPath=${codeInPath}`
                         })
+                    }else {
+                        wx.showModal({
+                            title: '错误',
+                            content: `${res.message}`,
+                            showCancel: false,
+                            confirmText: '确定',
+                            success: function(res) {
+                            }
+                        });
                     }
                 }).catch(err => {
 
@@ -278,18 +306,27 @@ Page({
         let that = this;
         let url = '';
         if (e.currentTarget.dataset.type === '1') {
-            url = `../all-trade-list-borrow/all-trade-list-borrow?allBorrowPath=${that.data.allData.allBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list-borrow/all-trade-list-borrow?allBorrowPath=${that.data.allData.allBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }else if (e.currentTarget.dataset.type === '2') {
-            url = `../all-trade-list-borrow/all-trade-list-borrow?todayBorrowPath=${that.data.allData.todayBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list-borrow/all-trade-list-borrow?todayBorrowPath=${that.data.allData.todayBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         else if (e.currentTarget.dataset.type === '3') {
-            url = `../all-trade-list-borrow/all-trade-list-borrow?timeOutBorrowPath=${that.data.allData.timeOutBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list-borrow/all-trade-list-borrow?timeOutBorrowPath=${that.data.allData.timeOutBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         else if (e.currentTarget.dataset.type === '4') {
-            url = `../all-trade-list-borrow/all-trade-list-borrow?soldBorrowPath=${that.data.allData.soldBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}`
+            url = `../all-trade-list-borrow/all-trade-list-borrow?soldBorrowPath=${that.data.allData.soldBorrowPath}&todayBorrowCount=${that.data.allData.todayBorrowCount}&timeOutBorrowCount=${that.data.allData.timeOutBorrowCount}&allBorrowCount=${that.data.allData.allBorrowCount}&soldBorrowCount=${that.data.allData.soldBorrowCount}&type=${e.currentTarget.dataset.type}&formIdList=${JSON.stringify(that.data.formIdList)}`
         }
         wx.navigateTo({
             url: url,
         })
     },
+
+    formSubmit: function(e) {
+        let that = this;
+        if (e.detail.formId != 'the formId is a mock one') {
+            that.data.formIdList.push({ids:e.detail.formId});
+            console.log(that.data.formIdList);
+        }
+        console.log(e.detail)
+    }
 })

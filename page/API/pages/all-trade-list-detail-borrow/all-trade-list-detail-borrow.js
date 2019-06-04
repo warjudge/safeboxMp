@@ -38,6 +38,15 @@ Page({
                         goBackOrderListPath: res.data.goBackOrderListPath
                     })
                     app.globalData.backPath= res.data.goBackOrderListPath
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err);
@@ -74,6 +83,15 @@ Page({
                             goBackOrderListPath: res.data.goBackOrderListPath
                         })
                         app.globalData.backPath= res.data.goBackOrderListPath
+                    }else {
+                        wx.showModal({
+                            title: '错误',
+                            content: `${res.message}`,
+                            showCancel: false,
+                            confirmText: '确定',
+                            success: function(res) {
+                            }
+                        });
                     }
                 }).catch(err => {
                     that.setData({
@@ -100,6 +118,15 @@ Page({
                         goBackOrderListPath: res.data.goBackOrderListPath
                     })
                     app.globalData.backPath= res.data.goBackOrderListPath
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 that.setData({
@@ -133,6 +160,15 @@ Page({
                         goBackOrderListPath: res.data.goBackOrderListPath
                     })
                     app.globalData.backPath= res.data.goBackOrderListPath
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err);
@@ -204,6 +240,15 @@ Page({
                     goBackOrderListPath: res.data.goBackOrderListPath
                 })
                 app.globalData.backPath= res.data.goBackOrderListPath
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch( err => {
             console.log(err);

@@ -47,6 +47,15 @@ Page({
                         }
                     });
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
 
@@ -64,13 +73,22 @@ Page({
                 console.log(res);
                 if (res.message === 'success') {
                     res.data.lists.forEach(item => {
-                        item.createTime = item.createTime?app.timeStamp2formDta(item.createTime):'';
+                        item.createTime = item.createTime?app.timeStamp2formDta(item.createTime).substr(0,10):'';
                     });
                     that.setData({
                         messageData : res.data.lists
                     })
                     app.globalData.backPath = res.data.goBackPath;
                     wx.hideLoading();
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 wx.showModal({

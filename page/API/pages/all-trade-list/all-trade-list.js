@@ -21,7 +21,8 @@ Page({
         array: ['全部', '待借出', '借出中', '已完成', '已关闭'],
         index: 0,
         goBackMiniPath:'',
-        showError: false
+        showError: false,
+        formIdList:[]
     },
 
     /**
@@ -43,12 +44,15 @@ Page({
             todayLendCount: options.todayLendCount,
             timeOutLendCount: options.timeOutLendCount,
             allLendCount: options.allLendCount,
-            settleLendCount: options.settleLendCount
+            settleLendCount: options.settleLendCount,
+            formIdList: JSON.parse(options.formIdList)
         });
         this.initData();
     },
     initData() {
-        app.sendGetRequest(this.data.path,{}).then(res => {
+        app.sendGetRequest(this.data.path,{
+            lists: this.data.formIdList
+        }).then(res => {
             console.log(res);
             if (res.message === 'success') {
                 this.setData({
@@ -77,13 +81,22 @@ Page({
                     })
                     wx.showModal({
                         title: '提示',
-                        content: '没有此类订单!!!',
+                        content: '没有此类订单!',
                         showCancel: false,
                         confirmText: '确定',
                         success: function(res) {
                         }
                     });
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err);
@@ -109,6 +122,15 @@ Page({
                         type: '1',
                     });
                     this.initData();
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -187,13 +209,22 @@ Page({
                     });
                     wx.showModal({
                         title: '提示',
-                        content: '没有此类订单!!!',
+                        content: '没有此类订单!',
                         showCancel: false,
                         confirmText: '确定',
                         success: function(res) {
                         }
                     });
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err);
@@ -232,7 +263,7 @@ Page({
                     });
                     wx.showModal({
                         title: '提示',
-                        content: '没有此类订单!!!',
+                        content: '没有此类订单!',
                         showCancel: false,
                         confirmText: '确定',
                         success: function(res) {
@@ -242,6 +273,15 @@ Page({
                         }
                     });
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch( err => {
             this.setData({

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "首页",
-  "enablePullDownRefresh": true,
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "upload": "../../../component/pages/uploader/upload"
   }

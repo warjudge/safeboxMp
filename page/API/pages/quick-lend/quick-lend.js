@@ -25,7 +25,7 @@ Page({
             },
         ],
         price: 0,
-        period: [3,5,7,15,20,30],
+        period: [1,3,5,7,15,20,30],
         term: 3,
         index: 0,
         orderNumber: '',
@@ -45,6 +45,15 @@ Page({
             if (res.message === 'success') {
                 this.data.createPath = res.data.createPath;
                 this.data.access_token = res.data.token;
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
 
@@ -246,9 +255,6 @@ Page({
                         showCancel: false,
                         confirmText: '确定',
                         success: function(res) {
-                            //  if (res.confirm) {
-                            //      console.log('用户点击了“返回授权”');
-                            //  }
                             return;
                         }
                     });

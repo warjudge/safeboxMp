@@ -58,6 +58,15 @@ Page({
                 // that.setData({
                 //     oldVerifyCode: res.data.code
                 // })
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err);
@@ -114,6 +123,15 @@ Page({
                         url: '../home/home',
                     })
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err)

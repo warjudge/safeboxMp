@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "宝贝管家",
-  "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
   "usingComponents": {}
 }

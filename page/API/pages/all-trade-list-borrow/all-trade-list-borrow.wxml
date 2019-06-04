@@ -3,12 +3,13 @@
         <view class="{{type === '1' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="1" bindtap="changeTap">全部({{allBorrowCount}})</view>
         <view class="{{type === '2' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="2" bindtap="changeTap">今日应还({{todayBorrowCount}})</view>
         <view class="{{type === '3'? 'top-tap top-tap-select': 'top-tap'}}" data-number="3" bindtap="changeTap">逾期未还({{timeOutBorrowCount}})</view>
-        <view class="{{type === '4' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="4" bindtap="changeTap">结算({{soldBorrowCount}})</view>
+        <view class="{{type === '4' ? 'top-tap top-tap-select': 'top-tap'}}" data-number="4" bindtap="changeTap">已卖出({{soldBorrowCount}})</view>
     </view>
     <view class="select-type" hidden="{{type !== '1'}}">
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
             <view class="picker">
-                当前选择：{{array[index]}}
+                <view style="font-size: 34rpx;color: #353535;margin-left: 38rpx;">选择订单类型：</view>
+                <view style="margin-right: 38rpx;">{{array[index]}}</view>
             </view>
         </picker>
     </view>
@@ -25,20 +26,20 @@
                 </view>
                 <view class="top-number" wx:if="{{type==='1'}}">{{item.amount}}件</view>
                 <view class="top-center" wx:else>
-                    <view class="center-number">{{item.amount}}件</view>
-                    <view class="center-number">已还 4件</view>
+                    <view class="center-number">总计{{item.amount}}件</view>
+                    <view class="center-number">已卖 {{item.soldAmount}}件</view>
                 </view>
-                <view class="top-amount">{{item.price}}</view>
+                <view class="top-amount">￥{{item.price}}</view>
             </view>
             <view class="list-bottom">
                 <view class="bottom-left">
                     <image class="bottom-img" src="../../../../image/person/shangjia.png"></image>
                     <text class="bottom-name">{{item.lenderName}}</text>
-                    <text>{{item.createTime}}</text>
+                    <text style="font-size:24rpx;font-weight: bold;color: #c5c5c5;">{{item.createTime}}</text>
                 </view>
                 <view class="bottom-right">
                     <view class="bottom-states" wx:if="{{!!item.isOverdue}}">逾期</view>
-                    <view>{{item.state}}</view>
+                    <view style="font-size:34rpx;font-weight: bold;color: #353535;">{{item.state}}</view>
                 </view>
             </view>
         </view>

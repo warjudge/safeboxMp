@@ -117,7 +117,7 @@
             <view class="contact-phone" bindtap="callHim" hidden="{{!!!detail.isOverdue}}">
                 <image src="/image/person/dianhua.png" style="width: 39rpx;height: 39rpx;"></image>
             </view>
-            <view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;" bindtap="reminder">催还</view>
+            <view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;width:86rpx;height:40rpx;background:#FD6070;border-radius:10rpx;text-align: center;font-size: 24rpx;line-height: 40rpx" bindtap="reminder">催还</view>
         </view>
         <view style="margin-right: 30rpx;">{{detail.state}}</view>
     </view>

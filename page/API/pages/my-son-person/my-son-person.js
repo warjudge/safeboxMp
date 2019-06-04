@@ -1,4 +1,3 @@
-
 var app = getApp();
 var promise = require('../../../../util/promisify.js');
 var getUserInfo = promise(wx.getUserInfo);
@@ -40,6 +39,15 @@ Page({
                         });
                     }
                     app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
 
@@ -84,6 +92,15 @@ Page({
                         lists: []
                     });
                 }
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err)
@@ -117,6 +134,15 @@ Page({
                             lists: []
                         });
                     }
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -133,6 +159,15 @@ Page({
                         pname: res.data.pname,
                         pcompany: res.data.pcompany,
                         erCodeUrl: res.data.erCodeUrl
+                    });
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
                     });
                 }
             }).catch(err => {
@@ -176,10 +211,14 @@ Page({
                 // that.createCode();
             }else {
                 wx.hideLoading();
-                wx.showModal({ // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-                    title: '提示',
-                    content: `${res.message}`
-                })
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err)

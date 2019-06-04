@@ -1,5 +1,5 @@
 {
   "navigationBarTitleText": "换绑手机号",
-  "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
   "usingComponents": {}
 }

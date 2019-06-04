@@ -26,10 +26,12 @@
                 </view>
                 <view class="top-number" wx:if="{{type==='1'}}">{{item.amount}}件</view>
                 <view class="top-center" wx:else>
-                    <view class="center-number">{{item.amount}}件</view>
-                    <view class="center-number">{{type === '4' ? '已卖': '待还'}} {{item.notReturnAmount}}件</view>
+                    <view class="center-number">总计{{item.amount}}件</view>
+                    <!--<view class="center-number">{{type === '4' ? '已卖': '待还'}} {{item.notReturnAmount}}件</view>-->
+                    <view class="center-number" wx:if="{{type==='4'}}">已卖{{item.soldAmount}}件</view>
+                    <view class="center-number" wx:else>待还{{item.notReturnAmount}}件</view>
                 </view>
-                <view class="top-amount">￥ {{item.price}}</view>
+                <view class="top-amount">￥{{item.price}}</view>
             </view>
             <view class="list-bottom">
                 <view class="bottom-left">

@@ -107,6 +107,15 @@ Page({
                 wx.navigateTo({
                     url: `../view-cert/view-cert?checkVoucherPath=${res.data.checkVoucherPath}`
                 })
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err)

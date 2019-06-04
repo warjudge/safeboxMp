@@ -2,6 +2,16 @@
 @import "/page/common/css/modal.wxss";
 @import "/page/common/css/product.wxss";
 
+form button{
+    padding: 0;
+    text-align: left;
+}
+
+form button::after{
+    content: '';
+    display: none;
+}
+
 .btn-text {
     margin-left: 40rpx;
     font-size: 24rpx;

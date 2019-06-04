@@ -30,6 +30,15 @@ Page({
                     })
                     app.globalData.firstPath = this.data.mineData.firstPath;
                     app.globalData.thirdPath = this.data.mineData.thirdPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -47,6 +56,15 @@ Page({
                     })
                     app.globalData.firstPath = this.data.mineData.firstPath;
                     app.globalData.thirdPath = this.data.mineData.thirdPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err => {
                 console.log(err)
@@ -97,6 +115,15 @@ Page({
                 wx.redirectTo({
                     url: `../relogin/relogin?loginPath=${res.data.loginPath}&sendPath=${res.data.sendPath}&codeInPath=${res.data.codeInPath}&reloginPath=${res.data.reLoginPath}`
                 })
+            }else {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.message}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
             }
         }).catch(err => {
             console.log(err);
@@ -123,6 +150,15 @@ Page({
                     app.globalData.firstPath = this.data.mineData.firstPath;
                     app.globalData.thirdPath = this.data.mineData.thirdPath;
                     app.globalData.backPath = '';
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err=> {
 
@@ -143,6 +179,15 @@ Page({
                     app.globalData.firstPath = this.data.mineData.firstPath;
                     app.globalData.thirdPath = this.data.mineData.thirdPath;
                     app.globalData.backPath = '';
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
                 }
             }).catch(err=> {
 

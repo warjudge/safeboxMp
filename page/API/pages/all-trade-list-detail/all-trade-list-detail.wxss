@@ -95,6 +95,7 @@
     border-radius: 10rpx;
     font-size: 24rpx;
     text-align: center;
+    color: #fff;
 }
 .list-state.one {
      background-color: #009944;
