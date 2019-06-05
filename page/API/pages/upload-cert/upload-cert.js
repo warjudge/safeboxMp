@@ -7,7 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        createPath: '',
         createVoucherPath: '',
         certList: [],
         newFiles: []
@@ -19,7 +18,8 @@ Page({
     onLoad (options) {
         this.setData({
             certList: JSON.parse(options.certList),
-            createVoucherPath: options.createVoucherPath
+            createVoucherPath: options.createVoucherPath,
+            newFiles: []
         });
         console.log(this.data.certList);
     },
@@ -85,6 +85,14 @@ Page({
 
                             }, (error) => { //回调 fail
                                 console.log('error: ' + error);
+                                wx.showModal({
+                                    title: '错误',
+                                    content: `上传图片失败`,
+                                    showCancel: false,
+                                    confirmText: '确定',
+                                    success: function(res) {
+                                    }
+                                });
                             },
                             { // 参数设置  地区代码 token domain 和直传的链接 注意七牛四个不同地域的链接不一样，我使用的是华南地区
                                 region: 'ECN',
@@ -120,5 +128,13 @@ Page({
         }).catch(err => {
             console.log(err)
         })
+    },
+    onShow(){
+        let that = this;
+        if (app.globalData.isBack) {
+            wx.switchTab({
+                url: `../home/home`
+            })
+        }
     }
 })

@@ -16,6 +16,7 @@ Page({
         canBindNewPhone: false,
         newPhone: "",
         newCodeButton: "获取验证码",
+        showError: false
     },
     onLoad(options) {
         console.log(options)
@@ -232,6 +233,10 @@ Page({
             }
         }).catch(err => {
             console.log(err)
+            this.setData({
+                showError: true,
+                step: "3",
+            })
         })
     }
 })

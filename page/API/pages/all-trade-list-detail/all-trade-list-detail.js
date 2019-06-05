@@ -140,6 +140,9 @@ Page({
     },
     onShow: function() {
         let that = this;
+        that.setData({
+            files: [],
+        })
         if (app.globalData.isBack) {
             app.sendGetRequest(app.globalData.backPath, {}).then(res => {
                 console.log(res);
@@ -157,7 +160,7 @@ Page({
                         giveBackPath: res.data.giveBackPath,
                         closePath: res.data.closePath,
                         reminderPath: res.data.reminderPath,
-                        goBackOrderListPath: res.data.goBackOrderListPath
+                        goBackOrderListPath: res.data.goBackOrderListPath,
                     })
                     app.globalData.backPath= res.data.goBackOrderListPath
                 }else {
@@ -292,6 +295,7 @@ Page({
                 });
             }
         }).catch(err => {
+            wx.hideLoading();
             that.setData({
                 showError: true
             })

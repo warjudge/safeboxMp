@@ -117,7 +117,7 @@
             <view class="contact-phone" bindtap="callHim" hidden="{{!!!detail.isOverdue}}">
                 <image src="/image/person/dianhua.png" style="width: 39rpx;height: 39rpx;"></image>
             </view>
-            <view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;width:86rpx;height:40rpx;background:#FD6070;border-radius:10rpx;text-align: center;font-size: 24rpx;line-height: 40rpx" bindtap="reminder">催还</view>
+            <view hidden="{{!!!detail.isOverdue}}" style="background-color:red;margin-left: 20rpx;width:86rpx;height:40rpx;background:#FD6070;border-radius:10rpx;text-align: center;font-size: 24rpx;line-height: 40rpx;color: #fff;" bindtap="reminder">催还</view>
         </view>
         <view style="margin-right: 30rpx;">{{detail.state}}</view>
     </view>
@@ -129,7 +129,7 @@
             <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>
             <text style="color: #CC0000;margin-right: 100rpx;">￥{{detail.price}}</text>
             <text style="margin-right: 50rpx;color: #c5c5c5">已卖<text style="color: #CC0000">{{detail.soldAmount}}</text>件商品</text>
-            <text style="margin-right: 50rpx;color: #CC0000;">￥{{item.soldPrice?item.soldPrice:'0'}}</text>
+            <text style="margin-right: 50rpx;color: #CC0000;">￥{{detail.soldPrice?detail.soldPrice:'0'}}</text>
         </view>
     </view>
     <view class="content">

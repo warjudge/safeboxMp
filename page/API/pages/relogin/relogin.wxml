@@ -1,4 +1,4 @@
-<view class='auth-view'>
+<view class='auth-view' hidden="{{showError}}">
     <form bindsubmit='submitForOld' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
         <!--<text class='getPhone-title'></text>-->
         <!--<view class='getPhone-avatar-border'>-->
@@ -28,7 +28,6 @@
         <text class='auth-text'>链接错误，请重试</text>
         <text class='auth-text'></text>
     </view>
-    <button class='auth-button' bindtap='retry'>重试</button>
 </view>
 
 

@@ -96,12 +96,21 @@ Page({
         console.log(e);
         let that = this;
         app.sendGetRequest(that.data.optionsPath.loginPath, {
-            phoneNumber: e.detail.value.oldPhone,
+            phone: e.detail.value.oldPhone,
             code: e.detail.value.oldCode,
             loginStyle: 2
         }).then(res => {
             console.log(res)
-            if (res.message === 'success') {
+            if (res.message === 'success'&&res.data.status) {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.data.status}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res) {
+                    }
+                });
+            }else if(res.message === 'success') {
                 app.globalData.transData = res.data;
                 console.log(123124);
                 if (app.globalData.orderNumber) {
@@ -123,23 +132,26 @@ Page({
                         url: '../home/home',
                     })
                 }
-            }else {
+            }
+        }).catch(err => {
+            console.log(err)
+            this.setData({
+                showError: true
+            })
+        })
+    },
+    goToIndex(e) {
+        app.sendGetRequest(this.data.optionsPath.reloginPath, {}).then(res => {
+            if (res.message === 'success'&&res.data.status === '验证码错误') {
                 wx.showModal({
                     title: '错误',
-                    content: `${res.message}`,
+                    content: `${res.data.status}`,
                     showCancel: false,
                     confirmText: '确定',
                     success: function(res) {
                     }
                 });
-            }
-        }).catch(err => {
-            console.log(err)
-        })
-    },
-    goToIndex(e) {
-        app.sendGetRequest(this.data.optionsPath.reloginPath, {}).then(res => {
-            if (res.message === 'success') {
+            }else if (res.message === 'success') {
                 wx.navigateTo({
                     url: `../../index`
                 })

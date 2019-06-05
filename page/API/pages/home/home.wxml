@@ -22,7 +22,7 @@
         </view>
         <view class="content-sum" style="color:#FD6070;" wx:if="{{type}}">
             <view class="sum-line">
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="2" bindtap="goToAllTradeList">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -32,7 +32,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="2" bindtap="goToAllTradeList" style="color: #FD6070;">
+                                                        <view class="sum-item" style="color: #FD6070;">
                                                             <text class="sum-name">今日应还</text>
                                                             <text class="sum-number">{{allData.todayLendCount}}</text>
                                                         </view>
@@ -46,7 +46,7 @@
                         </form>
                     </button>
                 </form>
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="3" bindtap="goToAllTradeList">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -56,7 +56,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="3" bindtap="goToAllTradeList" style="color: #FD6070;">
+                                                        <view class="sum-item" style="color: #FD6070;">
                                                             <text class="sum-name">逾期未还</text>
                                                             <text class="sum-number">{{allData.timeOutLendCount}}</text>
                                                         </view>
@@ -74,7 +74,7 @@
             </view>
 
             <view class="sum-line" style="color: #C5C5C5;">
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="1" bindtap="goToAllTradeList">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -84,7 +84,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="1" bindtap="goToAllTradeList" style="color: #C5C5C5;">
+                                                        <view class="sum-item" style="color: #C5C5C5;">
                                                             <text class="sum-name">全部订单</text>
                                                             <text class="sum-number">{{allData.allLendCount}}</text>
                                                         </view>
@@ -99,7 +99,7 @@
                     </button>
                 </form>
 
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="4" bindtap="goToAllTradeList">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -109,7 +109,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="4" bindtap="goToAllTradeList" style="color: #C5C5C5;">
+                                                        <view class="sum-item" style="color: #C5C5C5;">
                                                             <text class="sum-name">结算</text>
                                                             <text class="sum-number">{{allData.settleLendCount}}</text>
                                                         </view>
@@ -129,7 +129,7 @@
 
         <view class="content-sum" style="color:#FD6070;"  wx:else>
             <view class="sum-line">
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="2" bindtap="goToAllTradeListBorrow">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -139,7 +139,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="2" bindtap="goToAllTradeListBorrow" style="color:#FD6070;">
+                                                        <view class="sum-item" style="color:#FD6070;">
                                                             <text class="sum-name">今日需还</text>
                                                             <text class="sum-number">{{allData.todayBorrowCount}}</text>
                                                         </view>
@@ -153,7 +153,7 @@
                         </form>
                     </button>
                 </form>
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="3" bindtap="goToAllTradeListBorrow">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -163,7 +163,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" style="color:#FD6070;" data-type="3" bindtap="goToAllTradeListBorrow" style="color:#FD6070;">
+                                                        <view class="sum-item" style="color:#FD6070;" style="color:#FD6070;">
                                                             <text class="sum-name">逾期未还</text>
                                                             <text class="sum-number">{{allData.timeOutBorrowCount}}</text>
                                                         </view>
@@ -182,7 +182,7 @@
 
             <view class="sum-line" style="color: #C5C5C5;">
 
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="1" bindtap="goToAllTradeListBorrow">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -192,7 +192,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="1" bindtap="goToAllTradeListBorrow" style="color: #C5C5C5;">
+                                                        <view class="sum-item" style="color: #C5C5C5;">
                                                             <text class="sum-name">全部订单</text>
                                                             <text class="sum-number">{{allData.allBorrowCount}}</text>
                                                         </view>
@@ -207,7 +207,7 @@
                     </button>
                 </form>
 
-                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" class="sum-item" data-type="4" bindtap="goToAllTradeListBorrow">
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -217,7 +217,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <view class="sum-item" data-type="4" bindtap="goToAllTradeListBorrow" style="color: #C5C5C5;">
+                                                        <view class="sum-item" style="color: #C5C5C5;">
                                                             <text class="sum-name">已卖出</text>
                                                             <text class="sum-number">{{allData.soldBorrowCount}}</text>
                                                         </view>

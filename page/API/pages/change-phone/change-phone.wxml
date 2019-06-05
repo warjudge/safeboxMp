@@ -19,7 +19,7 @@
     </form>
 </view>
 
-<view class='auth-view' wx:else>
+<view class='auth-view' wx:if="{{step === '2'}}">
     <form bindsubmit='submitForNew' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
         <!--<text class='getPhone-title'></text>-->
         <!--<view class='getPhone-avatar-border'>-->
@@ -38,4 +38,11 @@
         </view>
         <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindNewPhone}}' form-type='submit'>提交</button>
     </form>
+</view>
+
+<view class='auth-view' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>网络错误，请重试</text>
+        <text class='auth-text'></text>
+    </view>
 </view>

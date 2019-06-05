@@ -324,9 +324,10 @@ Page({
     formSubmit: function(e) {
         let that = this;
         if (e.detail.formId != 'the formId is a mock one') {
-            that.data.formIdList.push({ids:e.detail.formId});
+            that.data.formIdList.push(e.detail.formId);
             console.log(that.data.formIdList);
         }
         console.log(e.detail)
+        console.log(that.data.formIdList)
     }
 })

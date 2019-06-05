@@ -82,7 +82,7 @@
             <view class='input-right'style="width:92%;">
                 <input type='number' maxlength='6' class='input input1' bindinput='setCode' name="code" value='' placeholder='请输入验证码'></input>
 
-                <form bindsubmit="formSubmit" report-submit="{{true}}" style="width: 160rpx;">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" style="width: 160rpx;" bindtap='getCode'>
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -92,7 +92,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <button class='input-button' formType="submit" bindtap='getCode' disabled='{{!canGetCode}}'>{{codeButton}}</button>
+                                                        <button class='input-button' formType="submit" disabled='{{!canGetCode}}'>{{codeButton}}</button>
                                                     </button>
                                                 </form>
                                             </button>
@@ -134,7 +134,7 @@
             <view class='input-right' style="width:92%;">
                 <input type='number' maxlength='6' class='input input1' bindinput='setCode' name="code" value='' placeholder='请输入验证码'></input>
 
-                <form bindsubmit="formSubmit" report-submit="{{true}}" style="width: 160rpx;">
+                <form bindsubmit="formSubmit" report-submit="{{true}}" style="width: 160rpx;" bindtap='getCode'>
                     <button formType="submit" class='btn'>
                         <form bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='btn'>
@@ -144,7 +144,7 @@
                                             <button formType="submit" class='btn'>
                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
                                                     <button formType="submit" class='btn'>
-                                                        <button class='input-button' formType="submit" bindtap='getCode' disabled='{{!canGetCode}}'>{{codeButton}}</button>
+                                                        <button class='input-button' formType="submit" disabled='{{!canGetCode}}'>{{codeButton}}</button>
                                                     </button>
                                                 </form>
                                             </button>
