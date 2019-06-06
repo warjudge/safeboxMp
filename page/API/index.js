@@ -232,7 +232,7 @@ Page({
                                     showRegisterComplete: true,
                                 });
 
-                            }else if(res.data.status === '子账户已被停用'){
+                            }else if(res.data.status === '子账户停用'){
                                 that.setData({
                                     showError: false,
                                     isHide: false,
@@ -264,6 +264,8 @@ Page({
                                     }).catch(err => {
 
                                     })
+                                }else if(app.globalData.fromMesQuery) {
+                                    that.fromMessageTemp(app.globalData.fromMesQuery);
                                 }else {
                                     wx.switchTab({
                                         url: './pages/home/home',
@@ -272,6 +274,16 @@ Page({
                                 // wx.navigateTo({
                                 //     url: './pages/all-trade-list-detail/all-trade-list-detail',
                                 // })
+                            }
+                            if (res.message === 'error') {
+                                wx.showModal({
+                                    title: '错误',
+                                    content: `${res.data.status}`,
+                                    showCancel: false,
+                                    confirmText: '确定',
+                                    success: function(res) {
+                                    }
+                                });
                             }
                         }).catch( err => {
                             console.log(err)
@@ -649,5 +661,34 @@ Page({
             console.log(that.data.formIdList);
         }
         console.log(e.detail)
+    },
+    fromMessageTemp(query) {
+        let that = this;
+        if (query.tempId === '1'||query.tempId === '4'||query.tempId === '6'){
+            wx.redirectTo({
+                url:`./pages/all-trade-list-detail/all-trade-list-detail?tempId=${query.tempId}&orderNumber=${query.orderNumber}&codeInPath=${that.data.codeInPath}`
+            })
+        }
+        if (query.tempId === '2'||query.tempId === '5'||query.tempId === '7'||query.tempId === '3'){
+            console.log(query.tempId)
+            wx.redirectTo({
+                url:`./pages/all-trade-list-detail-borrow/all-trade-list-detail-borrow?tempId=${query.tempId}&orderNumber=${query.orderNumber}&codeInPath=${that.data.codeInPath}`
+            })
+        }
+        if (query.tempId === '9'){
+            wx.redirectTo({
+                url:`./pages/payment-log/payment-log?tempId=${query.tempId}&codeInPath=${that.data.codeInPath}`
+            })
+        }
+        if (query.tempId === '10'){
+            wx.redirectTo({
+                url:`./pages/long-time/long-time?tempId=${query.tempId}&codeInPath=${that.data.codeInPath}`
+            })
+        }
+        if (query.tempId === '11'){
+            wx.redirectTo({
+                url:`./pages/my-info-person/my-info-person?tempId=${query.tempId}&codeInPath=${that.data.codeInPath}`
+            })
+        }
     }
 })

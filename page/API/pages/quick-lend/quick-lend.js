@@ -25,7 +25,7 @@ Page({
             },
         ],
         price: 0,
-        period: [1,3,5,7,15,20,30],
+        period: [3,5,7,15,20,30],
         term: 3,
         index: 0,
         orderNumber: '',
@@ -222,9 +222,6 @@ Page({
                 showCancel: false,
                 confirmText: '确定',
                 success: function(res) {
-                   //  if (res.confirm) {
-                   //      console.log('用户点击了“返回授权”');
-                   //  }
                     return;
                 }
             });
@@ -255,6 +252,9 @@ Page({
                         showCancel: false,
                         confirmText: '确定',
                         success: function(res) {
+                            //  if (res.confirm) {
+                            //      console.log('用户点击了“返回授权”');
+                            //  }
                             return;
                         }
                     });

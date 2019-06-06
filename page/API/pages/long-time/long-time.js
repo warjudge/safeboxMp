@@ -14,30 +14,61 @@ Page({
     onLoad(options) {
         app.globalData.isBack = false;
         console.log(options);
-        app.sendGetRequest(options.paymentPath,{}).then(res => {
-            console.log(res);
-            if (res.message === 'success') {
+        if (options.paymentPath) {
+            app.sendGetRequest(options.paymentPath,{}).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    this.setData({
+                        items: res.data.data,
+                        payPath: res.data.payPath,
+                        goSchemeOrderListPath: res.data.goSchemeOrderListPath
+                    });
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
                 this.setData({
-                    items: res.data.data,
-                    payPath: res.data.payPath,
-                    goSchemeOrderListPath: res.data.goSchemeOrderListPath
-                });
-                app.globalData.backPath = res.data.goBackPath;
-            }else {
-                wx.showModal({
-                    title: '错误',
-                    content: `${res.message}`,
-                    showCancel: false,
-                    confirmText: '确定',
-                    success: function(res) {
-                    }
-                });
-            }
-        }).catch(err => {
-            this.setData({
-                showError: true
+                    showError: true
+                })
             })
-        })
+        }
+        if (options.tempId) {
+            app.sendGetRequest(options.codeInPath,{
+                tempId: options.tempId
+            }).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    this.setData({
+                        items: res.data.data,
+                        payPath: res.data.payPath,
+                        goSchemeOrderListPath: res.data.goSchemeOrderListPath
+                    });
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
+                this.setData({
+                    showError: true
+                })
+            })
+        }
+
     },
     radioChange(e) {
         console.log('radio发生change事件，携带value值为：', e.detail.value)

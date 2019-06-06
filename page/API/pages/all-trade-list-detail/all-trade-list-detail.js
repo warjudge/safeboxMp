@@ -13,7 +13,8 @@ Page({
         files: [],
         reminderPath: '',
         showError: false,
-        goBackOrderListPath: ''
+        goBackOrderListPath: '',
+        isFromMes: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -59,15 +60,16 @@ Page({
                 })
             })
         }else if (options.orderNumber && options.codeInPath) {
-            that.setData({
-               isScan: true
-            });
-            app.sendGetRequest(options.codeInPath, {
-                orderNumber: options.orderNumber
-            }).then( res => {
-                console.log(res);
-                if (res.message === 'success') {
-                    if (res.data.lendPath) {
+            if (options.tempId) {
+                that.setData({
+                    isFromMes: true
+                });
+                app.sendGetRequest(options.codeInPath, {
+                    orderNumber: options.orderNumber,
+                    tempId: options.tempId
+                }).then( res => {
+                    console.log(res);
+                    if (res.message === 'success') {
                         res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                         res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                         res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
@@ -78,28 +80,71 @@ Page({
                         }
                         that.setData({
                             detail: res.data,
-                            lendPath: res.data.lendPath
+                            giveBackPath: res.data.giveBackPath,
+                            closePath: res.data.closePath,
+                            reminderPath: res.data.reminderPath,
+                            goBackOrderListPath: res.data.goBackOrderListPath
                         })
+                        app.globalData.backPath= res.data.goBackOrderListPath
                     }else {
-                        that.setData({
-                            showError: true
-                        })
+                        wx.showModal({
+                            title: '错误',
+                            content: `${res.message}`,
+                            showCancel: false,
+                            confirmText: '确定',
+                            success: function(res) {
+                            }
+                        });
                     }
-                }else {
-                    wx.showModal({
-                        title: '错误',
-                        content: `${res.message}`,
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                        }
-                    });
-                }
-            }).catch( err => {
-                that.setData({
-                    showError: true
+                }).catch( err => {
+                    that.setData({
+                        showError: true
+                    })
                 })
-            })
+
+            }else {
+                that.setData({
+                    isScan: true
+                });
+                app.sendGetRequest(options.codeInPath, {
+                    orderNumber: options.orderNumber
+                }).then( res => {
+                    console.log(res);
+                    if (res.message === 'success') {
+                        if (res.data.lendPath) {
+                            res.data.createTime = app.timeStamp2formDta(res.data.createTime);
+                            res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
+                            res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                            if (res.data.goodsList) {
+                                res.data.goodsList.forEach(item => {
+                                    item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                                });
+                            }
+                            that.setData({
+                                detail: res.data,
+                                lendPath: res.data.lendPath
+                            })
+                        }else {
+                            that.setData({
+                                showError: true
+                            })
+                        }
+                    }else {
+                        wx.showModal({
+                            title: '错误',
+                            content: `${res.message}`,
+                            showCancel: false,
+                            confirmText: '确定',
+                            success: function(res) {
+                            }
+                        });
+                    }
+                }).catch( err => {
+                    that.setData({
+                        showError: true
+                    })
+                })
+            }
         }
         if (options.goBackOrderDetailsPath) {
             app.sendGetRequest(options.goBackOrderDetailsPath,{}).then(res => {

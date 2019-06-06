@@ -17,29 +17,59 @@ Page({
     onLoad: function(options) {
         app.globalData.isBack = false;
         let that = this;
-        app.sendGetRequest(options.recordPath, {}).then(res => {
-            console.log(res);
-            if (res.message === 'success') {
-                res.data.beans.forEach(item=> {
-                   item.payTime = app.timeStamp2formDta(item.payTime);
-                });
-                that.setData({
-                    recordData : res.data,
-                });
-                app.globalData.backPath = res.data.goBackPath;
-            }else {
-                wx.showModal({
-                    title: '错误',
-                    content: `${res.message}`,
-                    showCancel: false,
-                    confirmText: '确定',
-                    success: function(res) {
-                    }
-                });
-            }
-        }).catch(err => {
+        if (options.recordPath) {
+            app.sendGetRequest(options.recordPath, {}).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    res.data.beans.forEach(item=> {
+                        item.payTime = app.timeStamp2formDta(item.payTime);
+                    });
+                    that.setData({
+                        recordData : res.data,
+                    });
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
 
-        })
+            })
+        }
+        if (options.tempId) {
+            app.sendGetRequest(options.codeInPath, {
+                tempId: options.tempId
+            }).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    res.data.beans.forEach(item=> {
+                        item.payTime = app.timeStamp2formDta(item.payTime);
+                    });
+                    that.setData({
+                        recordData : res.data,
+                    });
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
+
+            })
+        }
+
     },
     onUnload: function() {
         app.globalData.isBack = true;

@@ -22,7 +22,7 @@
             <view>￥{{item.price}}</view>
         </view>
     </view>
-    <view class="cus-footer">
+    <view class="cus-footer" hidden="{{isFromMes}}">
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;" hidden="{{isScan}}" bindtap="closeOrder">关闭订单</button>
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;background-image: none;background-color:#FD6070;" hidden="{{isScan}}" bindtap="showQRCode">二维码</button>
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 40%;background-image: none;background-color:#FD6070;" hidden="{{!isScan}}" bindtap="lendGoods">确认租借</button>
@@ -98,7 +98,7 @@
 
         </view>
     </view>
-    <view class="cus-footer">
+    <view class="cus-footer" hidden="{{isFromMes}}">
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
     </view>
@@ -150,7 +150,7 @@
             </view>
         </checkbox-group>
     </view>
-    <view class="cus-footer">
+    <view class="cus-footer" hidden="{{isFromMes}}">
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="_chooseImage">上传凭证</button>
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="viewCert" hidden="{{!detail.voucherList}}">查看凭证</button>
         <button class='modal-1-button input-button1' style="margin: 0 auto;width: 30%;background-image: none;background-color:#FD6070;" bindtap="selectSold" hidden="{{isSelect}}">选择归还</button>

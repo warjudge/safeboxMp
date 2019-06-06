@@ -19,29 +19,56 @@ Page({
         app.globalData.isBack = false;
         let that = this;
         console.log(options)
-        this.setData({
-            userType: options.userType
-        });
-        app.sendGetRequest(options.informationPath, {}).then(res => {
-            console.log(res);
-            if (res.message === 'success') {
-                that.setData({
-                    infoData: res.data
-                })
-                app.globalData.backPath = res.data.goBackPath;
-            }else {
-                wx.showModal({
-                    title: '错误',
-                    content: `${res.message}`,
-                    showCancel: false,
-                    confirmText: '确定',
-                    success: function(res) {
-                    }
-                });
-            }
-        }).catch(err => {
+        if (options.informationPath) {
+            this.setData({
+                userType: options.userType
+            });
+            app.sendGetRequest(options.informationPath, {}).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    that.setData({
+                        infoData: res.data
+                    })
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
 
-        })
+            })
+        }
+        if (options.tempId) {
+            this.setData({
+                userType: '3'
+            });
+            app.sendGetRequest(options.codeInPath, {}).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    that.setData({
+                        infoData: res.data
+                    })
+                    app.globalData.backPath = res.data.goBackPath;
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
+
+            })
+        }
     },
 
     /**

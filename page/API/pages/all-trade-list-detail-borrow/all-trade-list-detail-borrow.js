@@ -10,7 +10,8 @@ Page({
         selected: [],
         files: [],
         goBackOrderListPath: '',
-        showError: false
+        showError: false,
+        isFromMes: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -129,6 +130,45 @@ Page({
                     });
                 }
             }).catch(err => {
+                that.setData({
+                    showError: true
+                })
+            })
+        }
+
+        if (options.tempId) {
+            app.sendGetRequest(options.codeInPath, {
+                orderNumber: options.orderNumber,
+                tempId: options.tempId
+            }).then(res => {
+                console.log(res);
+                if (res.message === 'success') {
+                    res.data.createTime = app.timeStamp2formDta(res.data.createTime);
+                    res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
+                    res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    if (res.data.goodsList) {
+                        res.data.goodsList.forEach(item => {
+                            item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                        });
+                    }
+                    that.setData({
+                        detail: res.data,
+                        soldPath: res.data.soldPath,
+                        goBackOrderListPath: res.data.goBackOrderListPath
+                    })
+                    app.globalData.backPath= res.data.goBackOrderListPath
+                }else {
+                    wx.showModal({
+                        title: '错误',
+                        content: `${res.message}`,
+                        showCancel: false,
+                        confirmText: '确定',
+                        success: function(res) {
+                        }
+                    });
+                }
+            }).catch(err => {
+                console.log(err);
                 that.setData({
                     showError: true
                 })

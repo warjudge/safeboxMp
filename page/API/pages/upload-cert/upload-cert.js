@@ -112,7 +112,7 @@ Page({
         }).then(res => {
             console.log(res);
             if (res.message === 'success') {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: `../view-cert/view-cert?checkVoucherPath=${res.data.checkVoucherPath}`
                 })
             }else {
@@ -132,9 +132,9 @@ Page({
     onShow(){
         let that = this;
         if (app.globalData.isBack) {
-            wx.switchTab({
-                url: `../home/home`
-            })
+            // wx.switchTab({
+            //     url: `../home/home`
+            // })
         }
     }
 })

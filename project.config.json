@@ -8,7 +8,16 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
@@ -37,7 +46,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 21,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -58,16 +67,18 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "4",
-					"pathName": "page/API/pages/add-address/add-address",
-					"query": ""
+					"pathName": "page/API/index",
+					"query": "",
+					"scene": 1011
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "5",
-					"pathName": "page/API/pages/trade-list/trade-list",
-					"query": ""
+					"pathName": "page/API/index",
+					"query": "tempId=1",
+					"scene": null
 				},
 				{
 					"id": -1,

@@ -27,18 +27,21 @@ App({
         this.globalData.sid = sid;
         // this.globalData.uid = uid;
         //获取二维码信息，线上版本需要修改
-        if (opts.query.orderNumber) {
+        if (opts.query.orderNumber && !opts.query.tempId) {
             this.globalData.orderNumber = opts.query.orderNumber;
         }
         if (opts.query.id) {
             this.globalData.id = opts.query.id;
+        }
+        if (opts.query.tempId) {
+            this.globalData.fromMesQuery = opts.query;
         }
         let systemInfo = wx.getSystemInfoSync();
         this.globalData.navigationBarHeight = systemInfo.screenHeight - systemInfo.windowHeight;
         this.globalData.statusBarHeight = systemInfo.statusBarHeight ? systemInfo.statusBarHeight : 20;
         console.log(this.globalData.navigationBarHeight)
         console.log(systemInfo);
-        this.globalData.lastTime = Date.parse(new Date())
+        this.globalData.lastTime = Date.parse(new Date());
     },
     onShow(opts) {
         // console.log('App Show', opts)
@@ -67,8 +70,9 @@ App({
         backPath: '',
         isBack: false,
         firstPath: '',
-        thirdPath: ''
+        thirdPath: '',
         // userType: ''
+        fromMesQuery: null
     },
     updataApp: function() { //版本更新
         if (wx.canIUse('getUpdateManager')) {
@@ -167,9 +171,9 @@ App({
         } else {
             this.globalData.lastData = data;
             this.globalData.lastTime = temptime
-            var that = this;
+            let that = this;
             // data.command = "WXMINIAPP";
-            var promise = new Promise((resolve, reject) => {
+            let promise = new Promise((resolve, reject) => {
                 wx.request({
                     url: `${config.host}?sid=${that.globalData.sid}`,
                     // url: `http://192.168.31.209:8080/Gesture`,
@@ -202,8 +206,14 @@ App({
                             // }
                             if (res.data.views[0].data) {
                                 const  tempData = JSON.parse(res.data.views[0].data);
-                                tempData.value && tempData.value === 'Server side exceptionnull' ?
-                                    reject('error') : resolve(JSON.parse(tempData.value));
+                                if (tempData.value && tempData.value === 'Server side exceptionnull') {
+                                    console.log('重启')
+                                    that.onLaunch({});
+                                    reject('error')
+                                }else {
+                                    resolve(JSON.parse(tempData.value))
+                                }
+                                    // reject('error') : resolve(JSON.parse(tempData.value));
                             }
                         }
 
@@ -297,7 +307,7 @@ App({
                     //     tempData.value && tempData.value === 'Execution exception' ?
                     //         reject('error') : resolve(JSON.parse(tempData.value));
                     // }
-                    if (res.data.views[0].data) {
+                    if (res.data.views[0]&&res.data.views[0].data) {
                         const  tempData = JSON.parse(res.data.views[0].data);
                         tempData.value && tempData.value === 'Execution exception' ?
                                 reject('error') : resolve(JSON.parse(tempData.value));
