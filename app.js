@@ -26,7 +26,6 @@ App({
         }
         this.globalData.sid = sid;
         // this.globalData.uid = uid;
-        //获取二维码信息，线上版本需要修改
         if (opts.query.orderNumber && !opts.query.tempId) {
             this.globalData.orderNumber = opts.query.orderNumber;
         }
@@ -64,7 +63,7 @@ App({
         former: 1,
         lastData: '',
         lastTime: 0,
-        orderNumber: "",
+        orderNumber: '',
         transData: null,
         goodsList: [],
         backPath: '',
@@ -72,7 +71,9 @@ App({
         firstPath: '',
         thirdPath: '',
         // userType: ''
-        fromMesQuery: null
+        fromMesQuery: null,
+        actionPath:'',
+        orderNumberForBack: ''
     },
     updataApp: function() { //版本更新
         if (wx.canIUse('getUpdateManager')) {
@@ -192,7 +193,7 @@ App({
                         }
                     },
                     success: function(res) {
-                        // console.log(res);
+                        console.log(res);
 
                         if (res.data.type == "shipment") {
                             that.retrySession()
@@ -204,16 +205,18 @@ App({
                             //     tempData.value && tempData.value === 'Execution exception' ?
                             //             reject('error') : resolve(JSON.parse(tempData.value));
                             // }
-                            if (res.data.views[0].data) {
+                            if (res.data.views && res.data.views[0].data) {
                                 const  tempData = JSON.parse(res.data.views[0].data);
                                 if (tempData.value && tempData.value === 'Server side exceptionnull') {
-                                    console.log('重启')
-                                    that.onLaunch({});
+                                    // console.log('重启')
+                                    // that.onLaunch({});
                                     reject('error')
                                 }else {
                                     resolve(JSON.parse(tempData.value))
                                 }
                                     // reject('error') : resolve(JSON.parse(tempData.value));
+                            }else {
+                                reject('error')
                             }
                         }
 

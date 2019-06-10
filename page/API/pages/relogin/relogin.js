@@ -13,6 +13,7 @@ Page({
         showError: false
     },
     onLoad(options) {
+        app.globalData.isBack = false;
         console.log(options)
         this.setData({
             optionsPath: options
@@ -107,7 +108,12 @@ Page({
                     content: `${res.data.status}`,
                     showCancel: false,
                     confirmText: '确定',
-                    success: function(res) {
+                    success: function(res1) {
+                        if (res.data.status === '需要注册') {
+                            wx.redirectTo({
+                                url: `../../index`
+                            })
+                        }
                     }
                 });
             }else if(res.message === 'success') {
@@ -152,12 +158,16 @@ Page({
                     }
                 });
             }else if (res.message === 'success') {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: `../../index`
                 })
             }
         }).catch(err => {
 
         });
-    }
+    },
+    onUnload: function() {
+        let that = this;
+        app.globalData.isBack = true;
+    },
 })

@@ -1,7 +1,8 @@
-<view class="all-screen">
+<view class="all-screen" hidden='{{showError}}'>
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
-            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+            <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{allData.icon}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">{{allData.nickName}}</text>
@@ -245,4 +246,12 @@
             <view style="font-size:32rpx;position:absolute;top: 90rpx;left: 50%;transform: translateX(-50%)">扫码租货</view>
         </view>
     </view>
+</view>
+
+<view class='auth-view' hidden='{{!showError}}'>
+    <view class='auth-top-border'>
+        <text class='auth-text'>扫描不成功，请重新扫描</text>
+        <text class='auth-text'></text>
+    </view>
+    <!--<button class='auth-button' bindtap='retry'>重试</button>-->
 </view>

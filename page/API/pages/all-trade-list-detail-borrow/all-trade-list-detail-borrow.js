@@ -17,6 +17,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
         app.globalData.isBack= false;
         let that = this;
         console.log(options.checkPath);
@@ -28,8 +29,18 @@ Page({
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
                         });
                     }
@@ -38,6 +49,7 @@ Page({
                         soldPath: res.data.soldPath,
                         goBackOrderListPath: res.data.goBackOrderListPath
                     })
+                    console.log(that.data.detail)
                     app.globalData.backPath= res.data.goBackOrderListPath
                 }else {
                     wx.showModal({
@@ -73,9 +85,19 @@ Page({
                         res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                         res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                         res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                        app.globalData.orderNumberForBack = res.data.number;
                         if (res.data.goodsList) {
                             res.data.goodsList.forEach(item => {
                                 item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                                wx.getImageInfo({
+                                    src:item.imageUrl,
+                                    success(respon) {
+                                        item['backgroundSize'] = respon.width > respon.height;
+                                        that.setData({
+                                            detail: res.data,
+                                        })
+                                    }
+                                })
                             });
                         }
                         that.setData({
@@ -108,9 +130,19 @@ Page({
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -146,9 +178,19 @@ Page({
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -175,21 +217,57 @@ Page({
             })
         }
     },
+    onReady: function(){
+        // var query = wx.createSelectorQuery()
+        // console.log(query.selectAll('.imageDom'))
+        // query.selectAll('.imageDom').boundingClientRect()
+        // query.selectViewport().scrollOffset()
+        // query.exec(function(res) {
+        //     console.log(res);
+        //     // res[0].top // #the-id节点的上边界坐标
+        //     // res[1].scrollTop // 显示区域的竖直滚动位置
+        // })
+        //创建节点选择器
+        var query = wx.createSelectorQuery()
+        query.select('.list-img').boundingClientRect()
+        query.selectViewport().scrollOffset()
+        query.exec(function(res) {
+            console.log(res);
+
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onShow: function() {
+        // console.log(this.selectAll('.imageDom'))
         let that = this;
+        that.setData({
+            files: [],
+        })
         if (app.globalData.isBack) {
-            app.sendGetRequest(app.globalData.backPath, {}).then(res => {
+            app.sendGetRequest(app.globalData.actionPath, {
+                action:'all_trade_list_detail_borrow',
+                id:app.globalData.orderNumberForBack
+            }).then(res => {
                 console.log(res);
                 if (res.message === 'success') {
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -267,6 +345,15 @@ Page({
                 if (res.data.goodsList) {
                     res.data.goodsList.forEach(item => {
                         item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                        wx.getImageInfo({
+                            src:item.imageUrl,
+                            success(respon) {
+                                item['backgroundSize'] = respon.width > respon.height;
+                                that.setData({
+                                    detail: res.data,
+                                })
+                            }
+                        })
                     });
                 }
                 that.setData({

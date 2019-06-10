@@ -115,5 +115,17 @@
 /*.cus-footer {*/
     /*margin-top: 200rpx;*/
 /*}*/
+.auth-top-border {
+    height: 300rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
 
+.auth-text {
+    font-size: 30rpx;
+    color: #4a4a4a;
+}
 

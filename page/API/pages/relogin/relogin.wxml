@@ -15,10 +15,10 @@
                 <button class='input-button' bindtap='getOldCode' disabled='{{!canGetOldCode}}'>{{oldCodeButton}}</button>
             </view>
         </view>
-        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindOldPhone}}' form-type='submit'>提交</button>
+        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindOldPhone}}' form-type='submit'>登陆</button>
     </form>
     <button class='modal-1-button input-button1' bindtap="goToIndex"
-            style="margin-left: 0;margin-top: 40rpx;width: 596rpx;border-radius:47rpx;background-color:#F2F5F6;border: 2rpx solid #ccc;background-image:none;color: #000;">微信账号登录</button>
+            style="margin-left: 0;margin-top: 40rpx;width: 596rpx;border-radius:47rpx;background-color:#F2F5F6;border: 2rpx solid #ccc;background-image:none;color: #000;">微信账号登陆</button>
 </view>
 
 

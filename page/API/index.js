@@ -14,6 +14,7 @@ Page({
         valuePath: '',
         loginPath: '',
         sendPath: '',
+        reLoginPath: '',
         wxPhonePath: '',
         registerPath: '',
         codeInPath: '',
@@ -177,6 +178,8 @@ Page({
                         this.data.loginPath = res.data.loginPath;
                         this.data.codeInPath = res.data.codeInPath;
                         this.data.sendPath = res.data.sendPath;
+                        this.data.reLoginPath = res.data.reLoginPath;
+                        app.globalData.actionPath = res.data.actionPath;
                         this.login();
                     }
                 }).catch(err => {
@@ -497,6 +500,15 @@ Page({
         //     });
         //     return;
         // }
+        if (!e.detail.value.userName||!e.detail.value.idNumber||!e.detail.value.code) {
+            wx.showModal({
+                title: '警告',
+                content: '请填入全部信息',
+                showCancel: false,
+                confirmText: '重新输入',
+            });
+            return;
+        }
         wx.showLoading({
             title: '加载中...',
             mask: true
@@ -541,6 +553,8 @@ Page({
 
                                     })
                                 }
+                            }else if (res.message === 'success' && res.data.status === '需要登录') {
+                                that.login();
                             }else {
                                 wx.showModal({
                                     title: '错误',
@@ -580,6 +594,15 @@ Page({
         //     });
         //     return;
         // }
+        if (!e.detail.value.company||!e.detail.value.code||!that.data.files[0].fileUrl) {
+            wx.showModal({
+                title: '警告',
+                content: '请填入全部信息',
+                showCancel: false,
+                confirmText: '重新输入',
+            });
+            return;
+        }
         wx.showLoading({
             title: '加载中...',
             mask: true
@@ -616,6 +639,8 @@ Page({
                                     showCompanyRegister: false,
                                     showRegisterComplete: true,
                                 });
+                            }else if (res.message === 'success' && res.data.status === '需要登录') {
+                                that.login();
                             }else {
                                 wx.showModal({
                                     title: '错误',
@@ -690,5 +715,11 @@ Page({
                 url:`./pages/my-info-person/my-info-person?tempId=${query.tempId}&codeInPath=${that.data.codeInPath}`
             })
         }
+    },
+    goToLogin () {
+        let that = this;
+        wx.redirectTo({
+            url:`./pages/relogin/relogin?loginPath=${that.data.loginPath}&sendPath=${that.data.sendPath}&codeInPath=${that.data.codeInPath}&reloginPath=${that.data.reLoginPath}`
+        })
     }
 })

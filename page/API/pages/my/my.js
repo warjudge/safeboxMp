@@ -24,7 +24,7 @@ Page({
                     if (res.data.count > 99) {
                         res.data.count = 99
                     }
-                    res.data.endTime = app.timeStamp2formDta(res.data.endTime);
+                    res.data.endTime = res.data.endTime===0?'已停用':app.timeStamp2formDta(res.data.endTime);
                     that.setData({
                         mineData: res.data
                     })
@@ -50,7 +50,7 @@ Page({
                     if (res.data.count > 99) {
                         res.data.count = 99
                     }
-                    res.data.endTime = app.timeStamp2formDta(res.data.endTime);
+                    res.data.endTime = res.data.endTime===0?'已停用':app.timeStamp2formDta(res.data.endTime);
                     that.setData({
                         mineData: res.data
                     })
@@ -135,43 +135,16 @@ Page({
      */
     onShow: function() {
         let that = this;
-        if (app.globalData.isBack&& app.globalData.backPath) {
-            app.sendGetRequest(app.globalData.backPath,{}).then(res => {
+        if (app.globalData.isBack) {
+            app.sendGetRequest(app.globalData.actionPath,{
+                action:'my'
+            }).then(res => {
                 console.log(res);
                 if (res.message === 'success') {
                     if (res.data.count > 99) {
                         res.data.count = 99
                     }
-                    res.data.endTime = app.timeStamp2formDta(res.data.endTime);
-                    that.setData({
-                        mineData: res.data
-                    })
-                    app.globalData.isBack = false;
-                    app.globalData.firstPath = this.data.mineData.firstPath;
-                    app.globalData.thirdPath = this.data.mineData.thirdPath;
-                    app.globalData.backPath = '';
-                }else {
-                    wx.showModal({
-                        title: '错误',
-                        content: `${res.message}`,
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                        }
-                    });
-                }
-            }).catch(err=> {
-
-            })
-        }else if (app.globalData.thirdPath){
-            console.log('没刷新')
-            app.sendGetRequest(app.globalData.thirdPath,{}).then(res => {
-                console.log(res);
-                if (res.message === 'success') {
-                    if (res.data.count > 99) {
-                        res.data.count = 99
-                    }
-                    res.data.endTime = app.timeStamp2formDta(res.data.endTime);
+                    res.data.endTime = res.data.endTime===0?'已停用':app.timeStamp2formDta(res.data.endTime);
                     that.setData({
                         mineData: res.data
                     })
@@ -193,6 +166,64 @@ Page({
 
             })
         }
+        // if (app.globalData.isBack&& app.globalData.backPath) {
+        //     app.sendGetRequest(app.globalData.backPath,{}).then(res => {
+        //         console.log(res);
+        //         if (res.message === 'success') {
+        //             if (res.data.count > 99) {
+        //                 res.data.count = 99
+        //             }
+        //             res.data.endTime = app.timeStamp2formDta(res.data.endTime);
+        //             that.setData({
+        //                 mineData: res.data
+        //             })
+        //             app.globalData.isBack = false;
+        //             app.globalData.firstPath = this.data.mineData.firstPath;
+        //             app.globalData.thirdPath = this.data.mineData.thirdPath;
+        //             app.globalData.backPath = '';
+        //         }else {
+        //             wx.showModal({
+        //                 title: '错误',
+        //                 content: `${res.message}`,
+        //                 showCancel: false,
+        //                 confirmText: '确定',
+        //                 success: function(res) {
+        //                 }
+        //             });
+        //         }
+        //     }).catch(err=> {
+        //
+        //     })
+        // }else if (app.globalData.thirdPath){
+        //     console.log('没刷新')
+        //     app.sendGetRequest(app.globalData.thirdPath,{}).then(res => {
+        //         console.log(res);
+        //         if (res.message === 'success') {
+        //             if (res.data.count > 99) {
+        //                 res.data.count = 99
+        //             }
+        //             res.data.endTime = app.timeStamp2formDta(res.data.endTime);
+        //             that.setData({
+        //                 mineData: res.data
+        //             })
+        //             app.globalData.isBack = false;
+        //             app.globalData.firstPath = this.data.mineData.firstPath;
+        //             app.globalData.thirdPath = this.data.mineData.thirdPath;
+        //             app.globalData.backPath = '';
+        //         }else {
+        //             wx.showModal({
+        //                 title: '错误',
+        //                 content: `${res.message}`,
+        //                 showCancel: false,
+        //                 confirmText: '确定',
+        //                 success: function(res) {
+        //                 }
+        //             });
+        //         }
+        //     }).catch(err=> {
+        //
+        //     })
+        // }
     },
 
     /**

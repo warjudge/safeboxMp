@@ -12,6 +12,7 @@ Page({
         showError: false
     },
     onLoad(options) {
+        console.log(getCurrentPages());
         app.globalData.isBack = false;
         console.log(options);
         if (options.paymentPath) {
@@ -78,6 +79,18 @@ Page({
     },
     payment() {
         let that = this;
+        if (!that.data.id) {
+            wx.showModal({
+                title: '警告',
+                content: `请选择套餐`,
+                showCancel: false,
+                confirmText: '确定',
+                success: function(res) {
+
+                }
+            });
+            return;
+        }
         app.sendGetRequest(that.data.payPath,{
             id: that.data.id
         }).then(res1 => {
@@ -129,7 +142,9 @@ Page({
     },
     onShow:function(){
         if (app.globalData.isBack) {
-            app.sendGetRequest(app.globalData.backPath,{}).then(res => {
+            app.sendGetRequest(app.globalData.actionPath,{
+                action: 'long_time'
+            }).then(res => {
                 console.log(res);
                 if (res.message === 'success') {
                     this.setData({

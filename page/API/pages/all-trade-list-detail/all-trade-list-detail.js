@@ -30,9 +30,19 @@ Page({
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -73,8 +83,18 @@ Page({
                         res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                         res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                         res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                        app.globalData.orderNumberForBack = res.data.number;
                         if (res.data.goodsList) {
                             res.data.goodsList.forEach(item => {
+                                wx.getImageInfo({
+                                    src:item.imageUrl,
+                                    success(respon) {
+                                        item['backgroundSize'] = respon.width > respon.height;
+                                        that.setData({
+                                            detail: res.data,
+                                        })
+                                    }
+                                })
                                 item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
                             });
                         }
@@ -115,9 +135,19 @@ Page({
                             res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                             res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                             res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                            app.globalData.orderNumberForBack = res.data.number;
                             if (res.data.goodsList) {
                                 res.data.goodsList.forEach(item => {
                                     item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                                    wx.getImageInfo({
+                                        src:item.imageUrl,
+                                        success(respon) {
+                                            item['backgroundSize'] = respon.width > respon.height;
+                                            that.setData({
+                                                detail: res.data,
+                                            })
+                                        }
+                                    })
                                 });
                             }
                             that.setData({
@@ -153,9 +183,19 @@ Page({
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -189,15 +229,28 @@ Page({
             files: [],
         })
         if (app.globalData.isBack) {
-            app.sendGetRequest(app.globalData.backPath, {}).then(res => {
+            app.sendGetRequest(app.globalData.actionPath, {
+                action:'all_trade_list_detail',
+                id:app.globalData.orderNumberForBack
+            }).then(res => {
                 console.log(res);
                 if (res.message === 'success') {
                     res.data.createTime = app.timeStamp2formDta(res.data.createTime);
                     res.data.lendTime = res.data.lendTime?app.timeStamp2formDta(res.data.lendTime):'';
                     res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
+                    app.globalData.orderNumberForBack = res.data.number;
                     if (res.data.goodsList) {
                         res.data.goodsList.forEach(item => {
                             item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                            wx.getImageInfo({
+                                src:item.imageUrl,
+                                success(respon) {
+                                    item['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        detail: res.data,
+                                    })
+                                }
+                            })
                         });
                     }
                     that.setData({
@@ -263,6 +316,15 @@ Page({
                 if (res.data.goodsList) {
                     res.data.goodsList.forEach(item => {
                         item.endTime = item.endTime?app.timeStamp2formDta(item.endTime):'';
+                        wx.getImageInfo({
+                            src:item.imageUrl,
+                            success(respon) {
+                                item['backgroundSize'] = respon.width > respon.height;
+                                that.setData({
+                                    detail: res.data,
+                                })
+                            }
+                        })
                     });
                 }
                 that.setData({
@@ -373,6 +435,15 @@ Page({
                 res.data.endTime = res.data.endTime?app.timeStamp2formDta(res.data.endTime):'';
                 res.data.goodsList.forEach(item => {
                     item.endTime = app.timeStamp2formDta(item.endTime);
+                    wx.getImageInfo({
+                        src:item.imageUrl,
+                        success(respon) {
+                            item['backgroundSize'] = respon.width > respon.height;
+                            that.setData({
+                                detail: res.data,
+                            })
+                        }
+                    })
                 });
                 that.setData({
                     detail: res.data,

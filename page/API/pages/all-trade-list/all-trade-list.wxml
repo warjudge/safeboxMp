@@ -17,7 +17,8 @@
         <view class="con-list" wx:for="{{tradeList}}" wx:key="{{item.number}}" data-check-path="{{item.checkPath}}" bindtap="goToDetail">
             <view class="list-top">
                 <view class="top-img">
-                    <image class="img-item" wx:for="{{item.goodsList}}" wx:for-index="index1" wx:for-item="item1" wx:key="{{item1.hash}}" src="{{item1.imageUrl}}" wx:if="{{index1<5}}"></image>
+                    <!--<image class="img-item" wx:for="{{item.goodsList}}" wx:for-index="index1" wx:for-item="item1" wx:key="{{item1.hash}}" src="{{item1.imageUrl}}" wx:if="{{index1<5}}"></image>-->
+                    <view class="img-item" wx:for="{{item.goodsList}}" wx:for-index="index1" wx:for-item="item1" wx:key="{{item1.hash}}" wx:if="{{index1<5}}" style="background: url({{item1.imageUrl}}) center no-repeat;background-size: {{item1.backgroundSize ? 'auto 100%' : '100% auto'}}"></view>
                     <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
                     <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
                     <!--<image class="img-item" src="../../../../image/wechat.png"></image>-->
@@ -52,9 +53,13 @@
 </view>
 
 <view class='all-screen' hidden='{{!showError}}'>
-    <view class='auth-top-border'>
+    <view class='auth-top-border' wx:if="{{!showNull}}">
         <text class='auth-text'>网络错误，请重试</text>
         <text class='auth-text'></text>
     </view>
     <!--<button class='auth-button' bindtap='retry'>重试</button>-->
+    <view class='auth-top-border' wx:esle>
+        <text class='auth-text'>暂无订单</text>
+        <text class='auth-text'></text>
+    </view>
 </view>

@@ -10,13 +10,15 @@ Page({
         type: true,
         allData: null,
         files: [],
-        formIdList: []
+        formIdList: [],
+        showError: false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad (options) {
+        console.log(getCurrentPages());
         app.globalData.isBack = false;
         console.log(app.globalData.transData);
         this.setData({
@@ -37,8 +39,10 @@ Page({
      */
     onShow () {
         console.log('show')
-        if(app.globalData.isBack && app.globalData.backPath) {
-            app.sendGetRequest(app.globalData.backPath, {}).then(res => {
+        if (app.globalData.isBack) {
+            app.sendGetRequest(app.globalData.actionPath, {
+                action: 'home'
+            }).then(res => {
                 console.log(res)
                 if (res.message === 'success') {
                     this.setData({
@@ -60,32 +64,55 @@ Page({
             }).catch(err => {
                 console.log(err)
             })
-        }else if (app.globalData.firstPath){
-            app.sendGetRequest(app.globalData.firstPath, {}).then(res => {
-                console.log(res)
-                if (res.message === 'success') {
-                    this.setData({
-                        allData : res.data,
-                        files: []
-                    })
-                    app.globalData.firstPath = this.data.allData.firstPath;
-                    app.globalData.thirdPath = this.data.allData.thirdPath;
-                    app.globalData.backPath = '';
-                }else {
-                    wx.showModal({
-                        title: '错误',
-                        content: `${res.message}`,
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                        }
-                    });
-                }
-            }).catch(err => {
-                console.log(err)
-            })
         }
-
+        // if(app.globalData.isBack && app.globalData.backPath) {
+        //     app.sendGetRequest(app.globalData.backPath, {}).then(res => {
+        //         console.log(res)
+        //         if (res.message === 'success') {
+        //             this.setData({
+        //                 allData : res.data
+        //             })
+        //             app.globalData.firstPath = this.data.allData.firstPath;
+        //             app.globalData.thirdPath = this.data.allData.thirdPath;
+        //             app.globalData.backPath = '';
+        //         }else {
+        //             wx.showModal({
+        //                 title: '错误',
+        //                 content: `${res.message}`,
+        //                 showCancel: false,
+        //                 confirmText: '确定',
+        //                 success: function(res) {
+        //                 }
+        //             });
+        //         }
+        //     }).catch(err => {
+        //         console.log(err)
+        //     })
+        // }else if (app.globalData.firstPath){
+        //     app.sendGetRequest(app.globalData.firstPath, {}).then(res => {
+        //         console.log(res)
+        //         if (res.message === 'success') {
+        //             this.setData({
+        //                 allData : res.data,
+        //                 files: []
+        //             })
+        //             app.globalData.firstPath = this.data.allData.firstPath;
+        //             app.globalData.thirdPath = this.data.allData.thirdPath;
+        //             app.globalData.backPath = '';
+        //         }else {
+        //             wx.showModal({
+        //                 title: '错误',
+        //                 content: `${res.message}`,
+        //                 showCancel: false,
+        //                 confirmText: '确定',
+        //                 success: function(res) {
+        //                 }
+        //             });
+        //         }
+        //     }).catch(err => {
+        //         console.log(err)
+        //     })
+        // }
     },
 
     /**
@@ -244,7 +271,9 @@ Page({
                         });
                     }
                 }).catch(err => {
-
+                    that.setData({
+                        showError: true
+                    })
                 });
             }
         })

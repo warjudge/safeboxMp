@@ -1,7 +1,8 @@
 <scroll-view class='all-screen' wx:if="{{mineData.userType == '1'}}">
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
-            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+            <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{mineData.icon}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>
@@ -37,7 +38,8 @@
 <scroll-view class='all-screen' wx:if="{{mineData.userType == '2'}}">
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
-            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+            <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{mineData.icon}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>
@@ -82,7 +84,8 @@
 <scroll-view class='all-screen' wx:if="{{mineData.userType == '3'}}">
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
-            <open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>
+            <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{mineData.icon}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">到期时间：{{mineData.endTime}}</text>

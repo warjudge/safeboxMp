@@ -21,7 +21,8 @@ Page({
         array: ['全部', '待借出', '借出中', '已完成', '已关闭'],
         index: 0,
         showError: false,
-        formIdList:[]
+        formIdList:[],
+        showNull: false
     },
 
     /**
@@ -49,6 +50,7 @@ Page({
         this.initData();
     },
     initData() {
+        let that = this;
         app.sendGetRequest(this.data.path,{
             lists: this.data.formIdList
         }).then(res => {
@@ -65,22 +67,35 @@ Page({
                 if (res.data.orderList) {
                     res.data.orderList.forEach(item => {
                         item.createTime = app.timeStamp2formDta(item.createTime)
+                        item.goodsList.forEach(item1 => {
+                            wx.getImageInfo({
+                                src:item1.imageUrl,
+                                success(respon) {
+                                    item1['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        tradeList: res.data.orderList
+                                    })
+                                }
+                            })
+                        })
                     });
                     this.setData({
                         tradeList: res.data.orderList
                     });
                 }else{
                     this.setData({
-                        tradeList: []
+                        tradeList: [],
+                        showError: true,
+                        showNull: true
                     });
-                    wx.showModal({
-                        title: '提示',
-                        content: '没有此类订单!',
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                        }
-                    });
+                    // wx.showModal({
+                    //     title: '提示',
+                    //     content: '没有此类订单!',
+                    //     showCancel: false,
+                    //     confirmText: '确定',
+                    //     success: function(res) {
+                    //     }
+                    // });
                 }
             }else {
                 wx.showModal({
@@ -107,7 +122,9 @@ Page({
     },
     onShow: function() {
         if(app.globalData.isBack) {
-            app.sendGetRequest(app.globalData.backPath, {}).then(res => {
+            app.sendGetRequest(app.globalData.actionPath, {
+                action: 'all_trade_list_borrow'
+            }).then(res => {
                 console.log(res)
                 if (res.message === 'success') {
                     this.data.path = res.data.amountPath;
@@ -115,7 +132,8 @@ Page({
                         todayBorrowCount: res.data.today,
                         timeOutBorrowCount: res.data.overdue,
                         allBorrowCount: res.data.amount,
-                        soldBorrowCount: res.data.sold
+                        soldBorrowCount: res.data.sold,
+                        type: '1',
                     });
                     this.initData();
                 }else {
@@ -188,22 +206,35 @@ Page({
                 if (res.data.orderList) {
                     res.data.orderList.forEach(item => {
                         item.createTime = app.timeStamp2formDta(item.createTime)
+                        item.goodsList.forEach(item1 => {
+                            wx.getImageInfo({
+                                src:item1.imageUrl,
+                                success(respon) {
+                                    item1['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        tradeList: res.data.orderList
+                                    })
+                                }
+                            })
+                        })
                     });
                     that.setData({
                         tradeList: res.data.orderList
                     })
                 }else {
                     that.setData({
-                        tradeList: []
+                        tradeList: [],
+                        showError: true,
+                        showNull: true
                     });
-                    wx.showModal({
-                        title: '提示',
-                        content: '没有此类订单!',
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                        }
-                    });
+                    // wx.showModal({
+                    //     title: '提示',
+                    //     content: '没有此类订单!',
+                    //     showCancel: false,
+                    //     confirmText: '确定',
+                    //     success: function(res) {
+                    //     }
+                    // });
                 }
             }else {
                 wx.showModal({
@@ -245,25 +276,38 @@ Page({
                 if (res.data.orderList) {
                     res.data.orderList.forEach(item => {
                         item.createTime = app.timeStamp2formDta(item.createTime)
+                        item.goodsList.forEach(item1 => {
+                            wx.getImageInfo({
+                                src:item1.imageUrl,
+                                success(respon) {
+                                    item1['backgroundSize'] = respon.width > respon.height;
+                                    that.setData({
+                                        tradeList: res.data.orderList
+                                    })
+                                }
+                            })
+                        })
                     });
                     that.setData({
                         tradeList: res.data.orderList
                     })
                 }else {
                     that.setData({
-                        tradeList: []
+                        tradeList: [],
+                        showError: true,
+                        showNull: true
                     });
-                    wx.showModal({
-                        title: '提示',
-                        content: '没有此类订单!',
-                        showCancel: false,
-                        confirmText: '确定',
-                        success: function(res) {
-                            // if (res.confirm) {
-                            //     console.log('用户点击了“返回授权”');
-                            // }
-                        }
-                    });
+                    // wx.showModal({
+                    //     title: '提示',
+                    //     content: '没有此类订单!',
+                    //     showCancel: false,
+                    //     confirmText: '确定',
+                    //     success: function(res) {
+                    //         // if (res.confirm) {
+                    //         //     console.log('用户点击了“返回授权”');
+                    //         // }
+                    //     }
+                    // });
                 }
             }else {
                 wx.showModal({
