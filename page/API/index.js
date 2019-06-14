@@ -212,18 +212,34 @@ Page({
                             wx.hideLoading();
                             console.log(res);
                             if (res.data.status === '需要注册') {
-                                that.setData({
-                                    showError: false,
-                                    isHide: false,
-                                    isShowGetPhone: false,
-                                    isFirstLogin: true,
-                                    showPersonRegister: false,
-                                    showCompanyRegister: false,
-                                    showRegisterComplete: false,
-                                    registerPath: res.data.registerPath,
-                                    phone: wx.getStorageSync('phone'),
-                                    canGetCode: true
-                                });
+                                if (app.globalData.id) {
+                                    that.setData({
+                                        showError: false,
+                                        isHide: false,
+                                        isShowGetPhone: false,
+                                        isFirstLogin: false,
+                                        showPersonRegister: true,
+                                        showCompanyRegister: false,
+                                        showRegisterComplete: false,
+                                        registerPath: res.data.registerPath,
+                                        phone: wx.getStorageSync('phone'),
+                                        canGetCode: true
+                                    });
+                                }else {
+                                    that.setData({
+                                        showError: false,
+                                        isHide: false,
+                                        isShowGetPhone: false,
+                                        isFirstLogin: true,
+                                        showPersonRegister: false,
+                                        showCompanyRegister: false,
+                                        showRegisterComplete: false,
+                                        registerPath: res.data.registerPath,
+                                        phone: wx.getStorageSync('phone'),
+                                        canGetCode: true
+                                    });
+                                }
+
                             }else if (res.data.status === '待审核') {
                                 that.setData({
                                     showError: false,
@@ -250,6 +266,19 @@ Page({
                                 wx.redirectTo({
                                     url: `./pages/relogin/relogin?loginPath=${res.data.loginPath}&sendPath=${res.data.sendPath}&codeInPath=${res.data.codeInPath}&reloginPath=${res.data.reLoginPath}`
                                 })
+                            }else if(res.data.status === '子账户'){
+                                that.setData({
+                                    showError: false,
+                                    isHide: false,
+                                    isShowGetPhone: false,
+                                    isFirstLogin: false,
+                                    showPersonRegister: true,
+                                    showCompanyRegister: false,
+                                    showRegisterComplete: false,
+                                    registerPath: res.data.registerPath,
+                                    phone: wx.getStorageSync('phone'),
+                                    canGetCode: true
+                                });
                             }else {
                                 app.globalData.transData = res.data;
                                 console.log(123124);
@@ -362,26 +391,36 @@ Page({
                                     wx.hideLoading();
                                     console.log(res);
                                     if (res.message === 'success') {
-                                        if(res.data.state === '需要注册') {
-                                            this.setData({
-                                                phone: res.data.phone,
-                                                canGetCode: true
+                                        if(res.data.status === '需要注册') {
+                                            if (res.data.phone) {
+                                                this.setData({
+                                                    phone: res.data.phone,
+                                                    canGetCode: true
+                                                });
+                                                wx.setStorage({
+                                                    key: 'phone',
+                                                    data: that.data.phone,
+                                                    success (res){
+                                                        //已授权手机
+                                                        console.log(res);
+                                                        // that.setData({
+                                                        //     isShowGetPhone: false,
+                                                        //     isFirstLogin: true
+                                                        // });
+                                                        // wx.setNavigationBarTitle({
+                                                        //     title: '用户注册'
+                                                        // });
+                                                    },
+                                                })
+                                            }
+                                            that.setData({
+                                                isShowGetPhone: false,
+                                                isFirstLogin: true
                                             });
-                                            wx.setStorage({
-                                                key: 'phone',
-                                                data: that.data.phone,
-                                                success (res){
-                                                    //已授权手机
-                                                    console.log(res);
-                                                    that.setData({
-                                                        isShowGetPhone: false,
-                                                        isFirstLogin: true
-                                                    });
-                                                    wx.setNavigationBarTitle({
-                                                        title: '用户注册'
-                                                    });
-                                                },
-                                            })
+                                            wx.setNavigationBarTitle({
+                                                title: '用户注册'
+                                            });
+
                                         }else {
                                             this.setData({
                                                 phone: res.data.phone
@@ -594,6 +633,7 @@ Page({
         //     });
         //     return;
         // }
+        this.data.files = this.upload.getFiles();
         if (!e.detail.value.company||!e.detail.value.code||!that.data.files[0].fileUrl) {
             wx.showModal({
                 title: '警告',
@@ -607,8 +647,6 @@ Page({
             title: '加载中...',
             mask: true
         });
-        this.data.files = this.upload.getFiles();
-
         wx.getUserInfo({
             success: function(res) {
                 let userInfo = res.userInfo;

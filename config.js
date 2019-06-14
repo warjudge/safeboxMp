@@ -11,10 +11,10 @@
 // const host = 'http://192.168.31.128:18083/Gesture'
 // const host = 'http://47.100.205.81:18085/Gesture'
 // const host1 = 'http://47.100.205.81:18085/ImageUpload'
-// const host = 'http://192.168.31.129:8080/Gesture'
-// const host1 = 'http://192.168.31.129:8080/ImageUpload'
-const host = 'https://bgj.blingblingstar.com/Gesture'
-const host1 = 'http://47.100.205.81:18085/ImageUpload'
+// const host = 'http://192.168.31.209:8080/Gesture'
+// const host1 = 'http://192.168.31.209:8080/ImageUpload'
+const host = 'https://bgj.blingblingstar.com/Gesture';
+const host1 = 'https://bgj.blingblingstar.com/ImageUpload';
 
 
 const config = {

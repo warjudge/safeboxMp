@@ -110,7 +110,7 @@ Page({
         let that = this;
         let path = '';
         let flag = 1;
-        if (that.data.lists[e.currentTarget.dataset.index].status === '已停用') {
+        if (that.data.lists[e.currentTarget.dataset.index].status === '停用') {
             path = that.data.lists[e.currentTarget.dataset.index].startPath;
         }else if (that.data.lists[e.currentTarget.dataset.index].status === '启用') {
             path = that.data.lists[e.currentTarget.dataset.index].stopPath;

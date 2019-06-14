@@ -15,8 +15,8 @@ App({
             // uid = "";
         }
         console.log('App Launch', opts)
-        if(opts.scene){
-            let scene=decodeURIComponent(opts.scene);
+        if(opts.query.scene){
+            let scene=decodeURIComponent(opts.query.scene);
             console.log(scene);
             if (scene.split("=")[0] === 'orderNumber'){
                 this.globalData.orderNumber = scene.split('=')[1];

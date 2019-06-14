@@ -31,6 +31,17 @@ Page({
                         certList: res.data.voucherList,
                         userType: res.data.userType
                     })
+                    that.data.certList.forEach(item => {
+                        wx.getImageInfo({
+                            src:item.imageUrl,
+                            success(respon) {
+                                item['backgroundSize'] = respon.width > respon.height;
+                                that.setData({
+                                    certList: that.data.certList
+                                })
+                            }
+                        })
+                    });
                     app.globalData.backPath = res.data.goBackOrderDetailsPath;
                 }
             }).catch(err => {

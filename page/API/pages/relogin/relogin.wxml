@@ -1,12 +1,8 @@
-<view class='auth-view' hidden="{{showError}}">
+<view class='auth-view' hidden="{{!submitForCode}}">
     <form bindsubmit='submitForOld' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
-        <!--<text class='getPhone-title'></text>-->
-        <!--<view class='getPhone-avatar-border'>-->
-        <!--<open-data class='getPhone-avatar' type="userAvatarUrl"></open-data>-->
-        <!--</view>-->
         <view class='input-border' style="width: 90%">
             <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
-            <input style="width:92%;" type='number' maxlength='11' class='input' value='{{oldPhone}}' bindinput='setOldPhone' name="oldPhone" placeholder='请输入手机号'></input>
+            <input style="width:92%;" type='number' maxlength='11' class='input' value='{{oldPhone}}' bindinput='setOldPhone' name="oldPhone" placeholder='请输入账号'></input>
         </view>
         <view class='input-border' style="width: 90%">
             <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
@@ -15,10 +11,30 @@
                 <button class='input-button' bindtap='getOldCode' disabled='{{!canGetOldCode}}'>{{oldCodeButton}}</button>
             </view>
         </view>
-        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindOldPhone}}' form-type='submit'>登陆</button>
+        <view class="btn-text" bindtap="toPwd">账号密码登录</view>
+        <view class="btn-text-left" bindtap="toRegister" hidden="{{hiddenRegister}}">注册</view>
+        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" disabled='{{!canBindOldPhone}}' form-type='submit'>登录</button>
     </form>
     <button class='modal-1-button input-button1' bindtap="goToIndex"
-            style="margin-left: 0;margin-top: 40rpx;width: 596rpx;border-radius:47rpx;background-color:#F2F5F6;border: 2rpx solid #ccc;background-image:none;color: #000;">微信账号登陆</button>
+            style="margin-left: 0;margin-top: 40rpx;width: 596rpx;border-radius:47rpx;background-color:#F2F5F6;border: 2rpx solid #ccc;background-image:none;color: #000;">微信账号登录</button>
+</view>
+
+<view class='auth-view' hidden="{{!submitForPwd}}">
+    <form bindsubmit='loginFromPwd' style="width: 95%;margin: 0 auto;margin-top: 80rpx;">
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/phoneicon.png' style="width: 24rpx;height: 37rpx;"></image>
+            <input style="width:92%;" type='text' maxlength='11' class='input' name="userName" placeholder='请输入账号'></input>
+        </view>
+        <view class='input-border' style="width: 90%">
+            <image class='input-icon' src='/image/person/codeicon.png' style="width: 30rpx;height: 38rpx;"></image>
+            <input style="width:92%;" type='password' maxlength='20' class='input' name="pwd" placeholder='请输入密码'></input>
+        </view>
+        <view class="btn-text" bindtap="toCode">验证码登录</view>
+        <view class="btn-text-left" bindtap="toRegister" hidden="{{hiddenRegister}}">注册</view>
+        <button class='modal-1-button input-button1' style="margin: 0;margin: 0 auto;margin-top:80rpx;width: 596rpx;border-radius:47rpx;background-image: url();background-color:#FD6070;" form-type='submit'>登录</button>
+    </form>
+    <button class='modal-1-button input-button1' bindtap="goToIndex"
+            style="margin-left: 0;margin-top: 40rpx;width: 596rpx;border-radius:47rpx;background-color:#F2F5F6;border: 2rpx solid #ccc;background-image:none;color: #000;">微信账号登录</button>
 </view>
 
 

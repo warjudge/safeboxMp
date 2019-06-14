@@ -7,13 +7,13 @@
     <view class="header-contact">
         <view class="contact-left">
             <image class="contact-avatar" src="{{detail.lendAvatarUrl}}"></image>
-            <view style="margin-left: 30rpx;color: #c5c5c5;">{{detail.lenderName}}</view>
+            <view style="margin-left: 30rpx;color: #c5c5c5;height: 90rpx;line-height: 90rpx;">{{detail.lenderName}}</view>
         </view>
         <!--<view style="margin-right: 30rpx;">{{detail.state}}</view>-->
     </view>
     <view class="header-more">
         <view class="more-left">
-            <view class="left-top" hidden="{{!detail.returnTime}}">预计归还：{{detail.returnTime}}</view>
+            <view class="left-top" hidden="{{!detail.endTime}}">预计归还：{{detail.endTime}}</view>
             <view class="left-bottom">
                 <text style="margin-right: 30rpx;color: #c5c5c5">总计</text>
                 <text style="margin-right: 60rpx;color: #CC0000;">{{detail.amount}}<text style="color: #c5c5c5">件商品</text></text>

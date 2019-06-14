@@ -64,7 +64,7 @@
             <text class="register-txt little-sml" style="color: #FD6070">  管理子账户</text>
         </view>
     </view>
-    <view style="position: fixed;bottom: 0;right: 0;padding: 0 20rpx 20rpx 0;color: #3F97E5;" bindtap="goToLogin">登陆</view>
+    <view style="position: fixed;bottom: 0;right: 0;padding: 0 20rpx 20rpx 0;color: #3F97E5;" bindtap="goToLogin">登录</view>
 </view>
 
 

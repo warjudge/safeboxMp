@@ -36,8 +36,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad (options) {
+        let that = this;
         this.setData({
             goodsList: app.globalData.goodsList
+        });
+        app.globalData.goodsList.forEach(item => {
+            wx.getImageInfo({
+                src:item.imageUrl,
+                success(respon) {
+                    item['backgroundSize'] = respon.width > respon.height;
+                    that.setData({
+                        goodsList: app.globalData.goodsList
+                    })
+                }
+            })
         });
         console.log(this.data.goodsList);
         app.sendGetRequest(app.globalData.transData.doLendPath, {}).then(res=> {
@@ -162,6 +174,17 @@ Page({
                                     that.setData({
                                         goodsList: that.data.goodsList
                                     })
+                                    that.data.goodsList.forEach(item => {
+                                        wx.getImageInfo({
+                                            src:item.imageUrl,
+                                            success(respon) {
+                                                item['backgroundSize'] = respon.width > respon.height;
+                                                that.setData({
+                                                    goodsList: app.globalData.goodsList
+                                                })
+                                            }
+                                        })
+                                    });
                                 }
                                 wx.hideLoading();
 

@@ -1,7 +1,8 @@
 <view class="all-screen">
     <view class="content">
         <view class="goods-item" wx:for="{{goodsList}}" wx:key="{{item.hash}}">
-            <image src="{{item.imageUrl}}" alt="" class="mini-img"></image>
+            <!--<image src="{{item.imageUrl}}" alt="" class="mini-img"></image>-->
+            <view class="mini-img" style="background: url({{item.imageUrl}}) center no-repeat;background-size: {{item.backgroundSize ? 'auto 100%' : '100% auto'}}"></view>
             <view class="inp-box">
                 <input type="text" data-index="{{index}}" value="{{item.price}}" bindinput="computeAmount" bindfocus="initValue" class="mini-inp" placeholder-class="placeholder-style" placeholder="请输入价格" />
             </view>

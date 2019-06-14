@@ -10,7 +10,10 @@ Page({
         canBindOldPhone: false,
         oldPhone: "",
         oldCodeButton: "获取验证码",
-        showError: false
+        showError: false,
+        submitForPwd: false,
+        submitForCode: true,
+        hiddenRegister: false
     },
     onLoad(options) {
         app.globalData.isBack = false;
@@ -18,6 +21,11 @@ Page({
         this.setData({
             optionsPath: options
         })
+        if (this.data.optionsPath.from) {
+            this.setData({
+                hiddenRegister: true
+            })
+        }
     },
     setOldPhone(e) {
         let temp = false
@@ -146,6 +154,60 @@ Page({
             })
         })
     },
+
+    loginFromPwd(e) {
+        console.log(e);
+        let that = this;
+        app.sendGetRequest(that.data.optionsPath.loginPath, {
+            userName: e.detail.value.userName,
+            password: e.detail.value.pwd,
+            loginStyle: 1
+        }).then(res => {
+            console.log(res)
+            if (res.message === 'success'&&res.data.status) {
+                wx.showModal({
+                    title: '错误',
+                    content: `${res.data.status}`,
+                    showCancel: false,
+                    confirmText: '确定',
+                    success: function(res1) {
+                        if (res.data.status === '需要注册') {
+                            wx.redirectTo({
+                                url: `../../index`
+                            })
+                        }
+                    }
+                });
+            }else if(res.message === 'success') {
+                app.globalData.transData = res.data;
+                console.log(123124);
+                if (app.globalData.orderNumber) {
+                    wx.navigateTo({
+                        url:`../all-trade-list-detail/all-trade-list-detail?orderNumber=${app.globalData.orderNumber}&codeInPath=${that.data.codeInPath}`
+                    })
+                }else if (app.globalData.id) {
+                    app.sendGetRequest(that.data.codeInPath,{
+                        userNumber: app.globalData.id
+                    }).then(res => {
+                        wx.switchTab({
+                            url: '../home/home',
+                        })
+                    }).catch(err => {
+
+                    })
+                }else {
+                    wx.switchTab({
+                        url: '../home/home',
+                    })
+                }
+            }
+        }).catch(err => {
+            console.log(err)
+            this.setData({
+                showError: true
+            })
+        })
+    },
     goToIndex(e) {
         app.sendGetRequest(this.data.optionsPath.reloginPath, {}).then(res => {
             if (res.message === 'success'&&res.data.status === '验证码错误') {
@@ -166,8 +228,27 @@ Page({
 
         });
     },
+    toRegister() {
+        wx.redirectTo({
+            url: `../../index`
+        })
+    },
     onUnload: function() {
         let that = this;
         app.globalData.isBack = true;
     },
+    toPwd() {
+        this.setData({
+            showError: false,
+            submitForPwd: true,
+            submitForCode: false
+        })
+    },
+    toCode() {
+        this.setData({
+            showError: false,
+            submitForPwd: false,
+            submitForCode: true
+        })
+    }
 })

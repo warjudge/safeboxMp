@@ -2,7 +2,7 @@
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
             <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
-            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.icon}}"></image>
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.avatarUrl}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">{{infoData.nickName}}</text>
@@ -34,7 +34,7 @@
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
             <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
-            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.icon}}"></image>
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.avatarUrl}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">{{infoData.nickName}}</text>
@@ -62,7 +62,7 @@
     <view class="header">
         <view class='getPhone-avatar-border' style="width: 100%;height: 200rpx;padding-bottom: 20rpx;">
             <!--<open-data class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" type="userAvatarUrl"></open-data>-->
-            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.icon}}"></image>
+            <image class='getPhone-avatar' style="display: block;width: 178rpx;height: 178rpx;margin-top: 83rpx;" src="{{infoData.avatarUrl}}"></image>
         </view>
         <view class="header-name">
             <text style="font-size: 34rpx;">{{infoData.nickName}}</text>

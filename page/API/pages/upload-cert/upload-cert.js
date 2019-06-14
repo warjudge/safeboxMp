@@ -16,10 +16,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad (options) {
+        let that = this;
         this.setData({
             certList: JSON.parse(options.certList),
             createVoucherPath: options.createVoucherPath,
             newFiles: []
+        });
+        this.data.certList.forEach(item => {
+            wx.getImageInfo({
+                src:item.imageUrl,
+                success(respon) {
+                    item['backgroundSize'] = respon.width > respon.height;
+                    that.setData({
+                        certList: that.data.certList
+                    })
+                }
+            })
         });
         console.log(this.data.certList);
     },
@@ -80,6 +92,17 @@ Page({
                                     that.setData({
                                         certList: that.data.certList
                                     })
+                                    that.data.certList.forEach(item => {
+                                        wx.getImageInfo({
+                                            src:item.imageUrl,
+                                            success(respon) {
+                                                item['backgroundSize'] = respon.width > respon.height;
+                                                that.setData({
+                                                    certList: that.data.certList
+                                                })
+                                            }
+                                        })
+                                    });
                                 }
                                 wx.hideLoading();
 

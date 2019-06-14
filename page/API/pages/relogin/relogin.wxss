@@ -3,8 +3,17 @@
 @import "/page/common/css/product.wxss";
 
 .btn-text {
-  margin-left: 40rpx;
+   margin-left: 40rpx;
+   font-size: 24rpx;
+   margin-top: 20rpx;
+   display: inline-block;
+ }
+.btn-text-left {
+  margin-right: 40rpx;
   font-size: 24rpx;
+  margin-top: 20rpx;
+  display: inline-block;
+  float: right;
 }
 view.register-type-view {
   width: 100%;
@@ -70,6 +79,7 @@ text.register-txt.little-sml {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #fff;
 }
 
 .auth-top-border {

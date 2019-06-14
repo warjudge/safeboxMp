@@ -2,12 +2,12 @@
     <view class="content">
         <view class="con-line" wx:for="{{lists}}" wx:key="{{item.id}}" data-index="{{index}}" bindlongtap="showDel" hidden="{{lists.length===0}}">
             <view class="left-name">{{item.simpleName}}</view>
-            <view class="{{item.status==='已停用'?'left-state':(item.status==='正常'?'left-state normal':'left-state yet')}}">{{item.status}}</view>
+            <view class="{{item.status==='停用'?'left-state':(item.status==='正常'?'left-state normal':'left-state yet')}}">{{item.status}}</view>
 
             <view class="right-del" hidden="{{!item.showDel}}" data-path="{{item.deletePath}}" bindtap="delMySon">删除</view>
-            <view class="{{item.status==='已停用'?'right-state':(item.status==='正常'?'right-state normal':'right-state yet')}}"
+            <view class="{{item.status==='停用'?'right-state':(item.status==='正常'?'right-state normal':'right-state yet')}}"
                   hidden="{{!item.valid&&item.status==='未激活'}}" data-index="{{index}}" bindtap="operateMySon">
-                {{item.status==='已停用'?'正常':(item.status==='正常'?'停用':'邀请')}}
+                {{item.status==='停用'?'启用':(item.status==='正常'?'停用':'邀请')}}
             </view>
         </view>
         <!--<view class="con-line" bindlongtap="showDel">-->

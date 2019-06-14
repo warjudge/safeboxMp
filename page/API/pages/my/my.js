@@ -113,7 +113,7 @@ Page({
             console.log(res);
             if (res.message === 'success') {
                 wx.redirectTo({
-                    url: `../relogin/relogin?loginPath=${res.data.loginPath}&sendPath=${res.data.sendPath}&codeInPath=${res.data.codeInPath}&reloginPath=${res.data.reLoginPath}`
+                    url: `../relogin/relogin?loginPath=${res.data.loginPath}&sendPath=${res.data.sendPath}&codeInPath=${res.data.codeInPath}&reloginPath=${res.data.reLoginPath}&from=1`
                 })
             }else {
                 wx.showModal({
